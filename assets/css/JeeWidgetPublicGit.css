@@ -390,7 +390,7 @@ header {
   left: 50%;
   font-size: 8pt;
 }
-main {
+/* main {
   background: url('https://jeeliz.com/images/bg.png');
   background-size: 20%;
   padding-top: 20px;
@@ -399,4 +399,4 @@ main {
   main {
     padding-top: 0px;
   }
-}
+} */
