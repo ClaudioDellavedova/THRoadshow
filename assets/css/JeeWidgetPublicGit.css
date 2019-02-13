@@ -1,7 +1,7 @@
 #JeeWidget {
-  width: 800px;
-  height: 600px;
-
+  width: 1080px !important;
+  height: 1920px !important;
+  
   margin-left: auto;
   margin-right: auto;
 }

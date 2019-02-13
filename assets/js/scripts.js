@@ -10,14 +10,14 @@ $(document).ready(function(){
     });
 });
 
-function getCanvasAsImg(){
-    var canvas = document.getElementById('JeeWidgetCanvas');
-    var img64 = canvas.toDataURL("image/jpg");
+function faceClassification(){
+    var canvas = document.getElementById("JeeWidgetCanvas");
+    var img64 = canvas.toDataURL("faceImage/jpg");
     $.ajax({
         type: "POST",
-        url: "pyRunner.php",
+        url: "faceClassification.php",
         data: { imagebase64: img64 },
-        success: callbackFunc,
+        success: faceCallback,
         error: function( jqXhr, textStatus, errorThrown ){
             console.log( errorThrown );
         }
@@ -30,16 +30,26 @@ function getCanvasAsImg(){
     */
 }
 
-function runPyScript(input){
+function genderGuess(){
+    var canvas = document.getElementById("JeeWidgetCanvas");
+    var img64 = canvas.toDataURL("genderImage/jpg");
     $.ajax({
         type: "POST",
-        url: "_pyRunner.php",
-        data: { param: input },
-        success: callbackFunc
+        url: "genderGuess.php",
+        data: { imagebase64: img64 },
+        success: genderCallback,
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
     });
 }
 
-function callbackFunc(response){
+function faceCallback(response){
+    //do something with the response
+    console.log(response);
+}
+
+function genderCallback(response){
     //do something with the response
     console.log(response);
 }
