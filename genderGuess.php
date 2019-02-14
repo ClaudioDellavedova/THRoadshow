@@ -25,6 +25,7 @@
     while(!file_exists($outputpath)){
 
     }
+    sleep(1);
     $outputfile = fopen($outputpath, "r") or die("Unable to open file!");
     $string = fgets($outputfile);
     $perc = (float) fgets($outputfile);
