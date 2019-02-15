@@ -1,4 +1,5 @@
-var glassesList = [roundFemale, roundMale, squaredFemale, squaredMale, ovalFemale, ovalMale, triangularFemale, triangularMale];
+var glassesList = ["roundFemale", "roundMale", "squaredFemale", "squaredMale", "ovalFemale", "ovalMale", "triangularFemale", "triangularMale"];
+var swiperGlasses;
 var faceList = [];
 var genderList = [];
 var finalList = [];
@@ -6,6 +7,12 @@ var gender;
 var face;
 
 $(document).ready(function(){
+    swiperGlasses = new Swiper('#swiper-glasses', {
+        direction: 'horizontal',
+        loop: true,
+        longSwipesRatio: 0.1,
+        allowSlidePrev: true
+    });
     $(".visual-section").hide();
     $("#screen0").fadeIn(1000);
     $(".screen0btn0").click(function(){
@@ -51,60 +58,87 @@ function genderGuess(){
     });
 }
 
-function genderSlice(glassesList, gender){
-    switch(gender){
-        case "male":
-            for(var i = 0; i < glassesList.length; i += 2) glassesList.splice(i, 1);
+function genderSlice(genderGlassesList, paramGender){
+    var genderGlassesListTemp = [];
+    for(var i = 0; i < genderGlassesList.length; i++) genderGlassesListTemp.push(genderGlassesList[i]);
+    console.log(genderGlassesListTemp);
+    switch(paramGender){
+        case "male\r\n":
+            for(var i = genderGlassesListTemp.length - 2; i >= 0; i -= 2) genderGlassesListTemp.splice(i, 1);
             break;
-        case "female":
-            for(var i = 1; i < glassesList.length; i += 2) glassesList.splice(i, 1);
+        case "female\r\n":
+            for(var i = genderGlassesListTemp.length - 1; i >= 0; i -= 2) genderGlassesListTemp.splice(i, 1);
             break;
         case "undefined":
-            $(".viisual-section").hide();
+            genderGlassesListTemp = [];
+            $(".visual-section").hide();
             $(".screenGenderSelecton").fadeIn(800);
+            break;
         default:
             console.log("genderSlice: ERROR");
     }
-    return glassesList;
+    return genderGlassesListTemp;
 }
 
-function faceSlice(glassesList, face){
-    switch(face){
-        case "round":
-            glassesList.slice(0, glassesList.length/4);
+function faceSlice(faceGlassesList, paramFace){
+    var faceGlassesListTemp = [];
+    for(var i = 0; i < faceGlassesList.length; i++) faceGlassesListTemp.push(faceGlassesList[i]);
+    var quaterLen = faceGlassesList.length/4;
+    console.log(faceGlassesListTemp);
+    switch(paramFace){
+        case "round\r\n":
+            faceGlassesListTemp = faceGlassesListTemp.splice(0, quaterLen);
             break;
-        case "squared":
-            glassesList.slice(glassesList.length/4, glassesList.length/2);
+        case "squared\r\n":
+            faceGlassesListTemp = faceGlassesListTemp.splice(quaterLen, quaterLen);
             break;
-        case "oval":
-            glassesList.slice(glassesList.length/2, 3*glassesList.length/4);
+        case "oval\r\n":
+            faceGlassesListTemp = faceGlassesListTemp.splice((2 * quaterLen), quaterLen);
             break;
-        case "triangular":
-            glassesList.slice(3*glassesList.length/4);
+        case "triangular\r\n":
+            faceGlassesListTemp = faceGlassesListTemp.splice((3 * quaterLen), quaterLen);
+            break;
+        case "glasses\r\n":
+            faceGlassesListTemp = [];
+            console.log("Please remove your glasses");
             break;
         default:
             console.log("faceSlice: ERROR");
     }
-    return glassesList;
+    return faceGlassesListTemp;
 }
 
-function faceCallback(response){
+function faceCallback(faceResponse){
     //do something with the response
-    face = response;
-    console.log(response);
+    face = faceResponse;
+    console.log(faceResponse);
     faceList = faceSlice(glassesList, face);
+    console.log(faceList);
+    if(faceList.length == 0) setTimeout(function(){faceClassification();}, 2000);
+    finalList = matchLists(faceList, genderList);
 }
 
-function genderCallback(response){
+function genderCallback(genderResponse){
     //do something with the response
-    gender = response;
-    console.log(response);
+    gender = genderResponse;
+    console.log(genderResponse);
     genderList = genderSlice(glassesList, gender);
+    console.log(genderList);
+    if(genderList.length == 0) setTimeout(function(){genderGuess()}, 2000);
+    finalList = matchLists(faceList, genderList);
 }
 
-function matchLists(faceList, genderList){
-    while(faceList.length == 0 || genderList.lenght == 0){
-
+function matchLists(paramFaceList, paramGenderList){
+    if(paramFaceList.length != 0 && paramGenderList.length != 0){
+        var tempFinalList = [];
+        for(var i = 0; i < paramFaceList.length; i++){
+            for(var j = 0; j < paramGenderList.length; j++){
+                if(paramFaceList[i] == paramGenderList[j]){
+                    tempFinalList.push(paramFaceList[i]);
+                }
+            }
+        }
     }
-
+    console.log(tempFinalList);
+    return tempFinalList;
 }
