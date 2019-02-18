@@ -19,12 +19,6 @@
     <script type="text/javascript" src="assets/js/caman.full.min.js"></script>
     <script type="text/javascript" src="assets/js/scripts.js"></script>
     <script type="text/javascript">
-      // function which are used only for this functionnal test
-      function test_resizeCanvas() {
-        const wid = document.getElementById('JeeWidget')
-        wid.style.width = '1000px'
-      }
-
       // main function, launched with body.onload()
       function main() {
         JEEWIDGET.start({
@@ -63,11 +57,24 @@
 
   <body onload="main(); setTimeout(function(){faceClassification(); genderGuess();}, 2000);">
     <main>
-      <!-- BEGIN JEEWIDGET -->
-      <div id='JeeWidget'>
-        <canvas id='JeeWidgetCanvas'></canvas>
-      </div>
-      <!-- END JEEWIDGET -->
+      <section id="screen1" class="visual-section">
+        <div class="screenNavBtn"></div>
+      </section>
+      <section id="screen2" class="visual-section">
+        <div class="screenNavBtn"></div>
+      </section>
+      <section id="widgetScreen" class="visual-section">
+        <!-- BEGIN JEEWIDGET -->
+        <div id="JeeWidget">
+          <canvas id="JeeWidgetCanvas"></canvas>
+        </div>
+        <!-- END JEEWIDGET -->
+      </section>
     </main>
+    <div class="scanningPanel"></div>
+    <div class="recommendedGlassesPanel"></div>
+    <div id="THFooter">
+      <img  src="assets/images/thFooter.png"/>
+    </div>
   </body>
 </html>

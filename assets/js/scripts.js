@@ -7,21 +7,28 @@ var gender;
 var face;
 
 $(document).ready(function(){
-    swiperGlasses = new Swiper('#swiper-glasses', {
+    swiperGlasses = new Swiper('#swiper-filters', {
         direction: 'horizontal',
         loop: true,
         longSwipesRatio: 0.1,
         allowSlidePrev: true
     });
     $(".visual-section").hide();
-    $("#screen0").fadeIn(1000);
-    $(".screen0btn0").click(function(){
-        $("#screen0").fadeOut(800);
-        $("#screen1").fadeIn(800);
-    });
-    $(".screen1btn0").click(function(){
+    $("#screen1").fadeIn(1000);
+    $("#screen1 .screenNavBtn").click(function(){
         $("#screen1").fadeOut(800);
+        $("#screen2").fadeIn(800);
     });
+    $("#screen2 .screenNavBtn").click(function(){
+        $("#screen2").fadeOut(800);
+        $("#widgetScreen").fadeIn(800);
+        setTimeout(function(){
+            $(".scanningPanel").fadeIn(800);
+            //faceClassification();
+            //genderGuess();
+        }, 3000);
+    });
+    //setTimeout(function(){var canvas = document.body.appendChild(JEEWIDGET.capture_image(15, function(){console.log("callback")}, false))}, 30000);
 });
 
 function faceClassification(){
@@ -71,8 +78,8 @@ function genderSlice(genderGlassesList, paramGender){
             break;
         case "undefined":
             genderGlassesListTemp = [];
-            $(".visual-section").hide();
-            $(".screenGenderSelecton").fadeIn(800);
+            /* $(".visual-section").hide();
+            $(".screenGenderSelecton").fadeIn(800); */
             break;
         default:
             console.log("genderSlice: ERROR");
@@ -116,6 +123,10 @@ function faceCallback(faceResponse){
     console.log(faceList);
     if(faceList.length == 0) setTimeout(function(){faceClassification();}, 2000);
     finalList = matchLists(faceList, genderList);
+    if(finalList.length != 0){
+        $(".recommendedGlassesPanel").attr("recommendedGlasses", finalList[0]);
+        $(".recommendedGlassesPanel").fadeIn(800);
+    }
 }
 
 function genderCallback(genderResponse){
@@ -126,11 +137,15 @@ function genderCallback(genderResponse){
     console.log(genderList);
     if(genderList.length == 0) setTimeout(function(){genderGuess()}, 2000);
     finalList = matchLists(faceList, genderList);
+    if(finalList.length != 0){
+        $(".recommendedGlassesPanel").attr("recommendedGlasses", finalList[0]);
+        $(".recommendedGlassesPanel").fadeIn(800);
+    }
 }
 
 function matchLists(paramFaceList, paramGenderList){
+    var tempFinalList = [];
     if(paramFaceList.length != 0 && paramGenderList.length != 0){
-        var tempFinalList = [];
         for(var i = 0; i < paramFaceList.length; i++){
             for(var j = 0; j < paramGenderList.length; j++){
                 if(paramFaceList[i] == paramGenderList[j]){
@@ -138,6 +153,7 @@ function matchLists(paramFaceList, paramGenderList){
                 }
             }
         }
+        $(".scanningPanel").fadeOut(800);
     }
     console.log(tempFinalList);
     return tempFinalList;

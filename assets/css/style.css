@@ -1,6 +1,5 @@
 *{
     margin:0;
-    position: relative;
     font-family: 'Futura Std';
     font-weight: normal;
     padding: 0;
@@ -83,13 +82,60 @@ button {
     background-size: cover;
 }
 .inner-section{width:100%;height:100%;}
-#screen0{background-image: url("../img/screen0.png"); background-size: inherit;}
-#screen1{background-image: url("../img/screen1.png"); background-size: inherit;}
-#screen4{background-image: url("../img/screen4.png"); background-size: inherit;}
-#screen0 .screen0btn0, #screen1 .screen1btn0{
+#screen1{position: absolute; background-image: url("../images/screen1full.png"); background-size: cover; margin-left: auto; margin-right: auto;}
+#screen2{position: absolute; background-image: url("../images/screen2full.png"); background-size: cover; margin-left: auto; margin-right: auto;}
+.screenNavBtn {
     position: absolute;
     right: 0px;
-    bottom: 245px;
-    width: 270px;
-    height: 135px;
+    bottom: 246px;
+    width: 260px;
+    height: 130px;
+}
+#THFooter {
+    position: absolute;
+    margin: 0 auto;
+    width: 1080px;
+    height: 34px;
+    top: 1800px;
+}
+#THFooter img {
+    position: relative;
+    margin: 0 auto;
+    width: 587px;
+    height: 34px;
+    display: block;
+}
+/* .mainTextPanel {
+    position: relative;
+    margin: 0 auto;
+    width: 820px;
+    height: 1597px;
+    bottom: -323px;
+    display: block;
+    background-color: rgba(210,7,42,0.55);
+}
+.mainTextPanel span {
+    font-family: 'Myriad Pro';
+    font-weight: normal;
+    text-align: center;
+} */
+.scanningPanel {
+    position: absolute;
+    width: 1080px;
+    height: 1920px;
+    background-image: url("../images/scanningPanel.png");
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+.recommendedGlassesPanel {
+    position: absolute;
+    width: 1080px;
+    height: 1920px;
+    background-image: url("../images/recommendedGlassesPanel.png");
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
 }

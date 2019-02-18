@@ -11,13 +11,13 @@
   margin: 0 auto;
   max-width: 100%;
 }
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   #JeeWidget {
     width: calc(100vw - 40px);
     height: calc(100vh - 120px);
     margin: 20px;
   }
-}
+} */
 #JeeWidgetQuitButton {
   color: #FAFAFA;
   text-shadow: 0 0 1px black;
