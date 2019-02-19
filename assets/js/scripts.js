@@ -65,6 +65,21 @@ function genderGuess(){
     });
 }
 
+function glassesClassification(){
+    var canvas = document.getElementById("JeeWidgetCanvas");
+    var img64 = canvas.toDataURL("glassesImage/jpg");
+    $.ajax({
+        type: "POST",
+        url: "glassesClassification.php",
+        data: { recommendedGlasses: finalList[0],
+                imagebase64: img64 },
+        success: glassesCallback,
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
+    });
+}
+
 function genderSlice(genderGlassesList, paramGender){
     var genderGlassesListTemp = [];
     for(var i = 0; i < genderGlassesList.length; i++) genderGlassesListTemp.push(genderGlassesList[i]);
@@ -124,8 +139,7 @@ function faceCallback(faceResponse){
     if(faceList.length == 0) setTimeout(function(){faceClassification();}, 2000);
     finalList = matchLists(faceList, genderList);
     if(finalList.length != 0){
-        $(".recommendedGlassesPanel").attr("recommendedGlasses", finalList[0]);
-        $(".recommendedGlassesPanel").fadeIn(800);
+        displayRecommendedGlasses();
     }
 }
 
@@ -138,8 +152,20 @@ function genderCallback(genderResponse){
     if(genderList.length == 0) setTimeout(function(){genderGuess()}, 2000);
     finalList = matchLists(faceList, genderList);
     if(finalList.length != 0){
-        $(".recommendedGlassesPanel").attr("recommendedGlasses", finalList[0]);
-        $(".recommendedGlassesPanel").fadeIn(800);
+        displayRecommendedGlasses();
+    }
+}
+
+function glassesCallback(glassesResponse){
+    console.log(glassesResponse);
+    if(glassesResponse == "ERROR") setTimeout(function(){glassesClassification();}, 2000);
+    else if(glassesResponse == "miss"){
+        $("hitPanel").fadeOut(800);
+        $("missPanel").fadeIn(800);
+    }
+    else{
+        $("missPanel").fadeOut(800);
+        $("hitPanel").fadeIn(800);
     }
 }
 
@@ -157,4 +183,28 @@ function matchLists(paramFaceList, paramGenderList){
     }
     console.log(tempFinalList);
     return tempFinalList;
+}
+
+function displayRecommendedGlasses(){
+    $(".recommendedGlassesPanel").fadeIn(800);
+    switch(finalList[0]){
+        case "roundFemale": $(".recommendedGlassesPanel").append("<div class='roundFemale'></div>");
+            break;
+        case "roundMale": $(".recommendedGlassesPanel").append("<div class='roundMale'></div>");
+            break;
+        case "squaredFemale": $(".recommendedGlassesPanel").append("<div class='squaredFemale'></div>");
+            break;
+        case "squaredMale": $(".recommendedGlassesPanel").append("<div class='squaredMale'></div>");
+            break;
+        case "ovalFemale": $(".recommendedGlassesPanel").append("<div class='ovalFemale'></div>");
+            break;
+        case "ovalMale": $(".recommendedGlassesPanel").append("<div class='ovalMale'></div>");
+            break;
+        case "triangularFemale": $(".recommendedGlassesPanel").append("<div class='triangularFemale'></div>");
+            break;
+        case "triangularMale": $(".recommendedGlassesPanel").append("<div class='triangularMale'></div>");
+            break;
+        default:
+            console.log("displayRecommendedGlasses: ERROR");
+    }
 }
