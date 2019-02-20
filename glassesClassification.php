@@ -49,16 +49,24 @@
     }
     sleep(1);
     $outputfile = fopen($outputpath, "r") or die("Unable to open file!");
+    $string = fgets($outputfile);
     $perc = (float) fgets($outputfile);
-    if($perc < 0.7){
-        fclose($outputfile);
-        unlink($outputpath);
-        echo "miss";
+    if($string == "hit\r\n"){
+        if($perc < 0.7){
+            fclose($outputfile);
+            unlink($outputpath);
+            echo "miss";
+        }
+        else{
+            fclose($outputfile);
+            unlink($outputpath);
+            echo "hit";
+        }
     }
     else{
         fclose($outputfile);
         unlink($outputpath);
-        echo "hit";
+        echo "miss";
     }
 
 ?>

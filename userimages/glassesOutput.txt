@@ -1,0 +1,4 @@
+palladium
+0.57739687
+notpalladium
+0.42260316
