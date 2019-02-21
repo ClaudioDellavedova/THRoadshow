@@ -138,6 +138,42 @@ button {
     margin: 0 auto;
     display: none;
 }
+.removeGlassesPanel {
+    position: absolute;
+    width: 1080px;
+    height: 220px;
+    top: 220px;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Futura Std';
+    font-weight: bold;
+    font-size: 100px;
+    text-align: center;
+    /* background-image: url("../images/removeGlasses.png");
+    background-size: cover; */
+    margin: 0 auto;
+    display: none;
+}
+.genderSelectionPanel {
+    display: none;
+}
+.genderSelectionPanel .maleButton {
+    position: absolute;
+    top: 515px;
+    left: 0px;
+    width: 500px;
+    height: 500px;
+    background-image: url("../images/maleLogo.png");
+    background-size: cover;
+}
+.genderSelectionPanel .femaleButton {
+    position: absolute;
+    top: 515px;
+    right: 0px;
+    width: 500px;
+    height: 500px;
+    background-image: url("../images/femaleLogo.png");
+    background-size: cover;
+}
 .recommendedGlassesPanel {
     position: absolute;
     width: 1080px;
@@ -211,6 +247,20 @@ button {
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
 }
+.tellMeButton {
+    position: absolute;
+    right: 0;
+    bottom: 150px;
+    width: 350px;
+    height: 75px;
+    line-height: 75px;
+    vertical-align: middle;
+    text-align: center;
+    padding-right: 135px;
+    font-size: 15px;
+    background-color: rgba(59,10,29,0.7);
+    color: white;
+}
 .missPanel {
     position: absolute;
     width: 1080px;
@@ -221,6 +271,20 @@ button {
     margin-right: auto;
     display: none;
 }
+.missPanel .screenNavBtn {
+    background-image: url("../images/screenNavBtn.png");
+}
+.missPanel .retryBtn {
+    position: relative;
+    top: 1600px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    background-color: rgb(19, 39, 122);
+    border-radius: 100%;
+    border-width: 5px;
+    border-color: white;
+}
 .hitPanel {
     position: absolute;
     width: 1080px;
@@ -230,4 +294,7 @@ button {
     margin-left: auto;
     margin-right: auto;
     display: none;
+}
+.hitPanel .screenNavBtn {
+    background-image: url("../images/screenNavBtn.png");
 }

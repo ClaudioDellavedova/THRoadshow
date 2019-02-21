@@ -10,6 +10,8 @@
     echo $output; */
     
     // remove the part that we don't need from the provided image and decode it
+    $errorThrown = 0;
+
     $glasses = $_POST['recommendedGlasses'];
 
     $imgdata = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['imagebase64']));
@@ -38,35 +40,37 @@
         case "triangularMale": $oExec = $WshShell->Run("python.exe E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_tmglasses/label_image.py --graph E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_tmglasses/retrained_graph.pb --labels E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_tmglasses/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg", 7, false);
             break;
         default:
-            $glasses = "ERROR";
+            $errorThrown = 1;
             echo "glassesClassification: ERROR";
     }
     //While per ricerca esistenza file output.txt
     //Quando trovato, leggere il contenuto, interpretarlo se necessario e inviare la risposta al client
-    $outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";
-    while(!file_exists($outputpath)){
+    if($errorThrown == 0){    
+        $outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";
+        while(!file_exists($outputpath)){
 
-    }
-    sleep(1);
-    $outputfile = fopen($outputpath, "r") or die("Unable to open file!");
-    $string = fgets($outputfile);
-    $perc = (float) fgets($outputfile);
-    if($string == "hit\r\n"){
-        if($perc < 0.7){
-            fclose($outputfile);
-            unlink($outputpath);
-            echo "miss";
+        }
+        sleep(1);
+        $outputfile = fopen($outputpath, "r") or die("Unable to open file!");
+        $string = fgets($outputfile);
+        $perc = (float) fgets($outputfile);
+        if($string == "hit\r\n"){
+            if($perc < 0.6){
+                fclose($outputfile);
+                unlink($outputpath);
+                echo "miss";
+            }
+            else{
+                fclose($outputfile);
+                unlink($outputpath);
+                echo "hit";
+            }
         }
         else{
             fclose($outputfile);
             unlink($outputpath);
-            echo "hit";
+            echo "miss";
         }
-    }
-    else{
-        fclose($outputfile);
-        unlink($outputpath);
-        echo "miss";
     }
 
 ?>

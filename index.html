@@ -8,21 +8,19 @@
     <!-- INCLUDE MAIN SCRIPT -->
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/JeeWidgetPublicGit.css"/>
-    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
     <link rel="stylesheet" href="assets/css/fonts.css"/>
     <link rel="stylesheet" href="assets/css/style.css"/>
     <script type="text/javascript" src="assets/js/jquery/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="assets/js/JeelizNNCwidget.js"></script>
-    <script type="text/javascript" src="assets/js/swiper/swiper.min.js"></script>
     <script type="text/javascript" src="assets/js/caman.full.min.js"></script>
     <script type="text/javascript" src="assets/js/scripts.js"></script>
     <script type="text/javascript">
       // main function, launched with body.onload()
       function main() {
         JEEWIDGET.start({
-          sku: 'burberry_brown',
+          sku: 'empty',
           searchImageMask: 'assets/images/blank.png',
           searchImageColor: 0x000000,
           onError: function(errorLabel){ // this function catches errors, so you can display custom integrated messages
@@ -55,7 +53,7 @@
     </script>
   </head>
 
-  <body onload="main(); setTimeout(function(){faceClassification(); genderGuess();}, 2000);">
+  <body>
     <main>
       <section id="screen1" class="visual-section">
         <div class="screenNavBtn"></div>
@@ -70,11 +68,25 @@
         </div>
         <!-- END JEEWIDGET -->
       </section>
+      <div class="scanningPanel"></div>
+      <div class="genderSelectionPanel">
+        <div class="maleButton"></div>
+        <div class="femaleButton"></div>
+      </div>
+      <div class="removeGlassesPanel">PLEASE,<br/>REMOVE YOUR<br/>GLASSES</div>
+      <div class="recommendedGlassesPanel">
+        <div class="tellMeButton">TELL ME HOW I LOOK</div>
+      </div>
+      <div class="hitPanel">
+        <div class="screenNavBtn"></div>
+      </div>
+      <div class="missPanel">
+        <div class="retryBtn"></div>
+        <div class="screenNavBtn"></div>
+      </div>
     </main>
-    <div class="scanningPanel"></div>
-    <div class="recommendedGlassesPanel"></div>
-    <div id="THFooter">
+    <footer id="THFooter">
       <img  src="assets/images/thFooter.png"/>
-    </div>
+    </footer>
   </body>
 </html>
