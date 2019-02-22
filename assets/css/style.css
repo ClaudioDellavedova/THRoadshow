@@ -73,26 +73,19 @@ button {
 }
 /* ############################################################## */
 .visual-section{
+    position: absolute;
     overflow: hidden;
     width: 1080px;
     height: 1920px;
-    background-color: #FFF;
-    position: absolute;
     margin: 0 auto;
     background-size: cover;
 }
 .inner-section{width:100%;height:100%;}
 #screen1{
-    position: absolute;
     background-image: url("../images/screen1full.png");
-    background-size: cover;
-    margin: 0 auto;
 }
 #screen2{
-    position: absolute;
     background-image: url("../images/screen2full.png");
-    background-size: cover;
-    margin: 0 auto;
 }
 .screenNavBtn {
     position: absolute;
@@ -103,7 +96,6 @@ button {
 }
 #THFooter {
     position: absolute;
-    margin: 0 auto;
     width: 1080px;
     height: 34px;
     top: 1800px;
@@ -114,6 +106,21 @@ button {
     width: 587px;
     height: 34px;
     display: block;
+}
+#resetHeader {
+    position: absolute;
+    width: 1080px;
+    height: 70px;
+}
+#resetHeader .resetBtn {
+    position: relative;
+    width: 150px;
+    height: 70px;
+    margin: 0 auto;
+    background-color: rgb(19, 39, 122);
+    color: white;
+    line-height: 70px;
+    text-align: center;
 }
 /* .mainTextPanel {
     position: relative;
@@ -129,16 +136,11 @@ button {
     font-weight: normal;
     text-align: center;
 } */
-.scanningPanel {
-    position: absolute;
-    width: 1080px;
-    height: 1920px;
+#scanningPanel {
     background-image: url("../images/scanningPanel.png");
-    background-size: cover;
-    margin: 0 auto;
     display: none;
 }
-.removeGlassesPanel {
+#scanningPanel .removeGlasses {
     position: absolute;
     width: 1080px;
     height: 220px;
@@ -148,15 +150,12 @@ button {
     font-weight: bold;
     font-size: 100px;
     text-align: center;
-    /* background-image: url("../images/removeGlasses.png");
-    background-size: cover; */
-    margin: 0 auto;
     display: none;
 }
-.genderSelectionPanel {
+#genderSelectionPanel {
     display: none;
 }
-.genderSelectionPanel .maleButton {
+#genderSelectionPanel .maleButton {
     position: absolute;
     top: 515px;
     left: 0px;
@@ -165,7 +164,7 @@ button {
     background-image: url("../images/maleLogo.png");
     background-size: cover;
 }
-.genderSelectionPanel .femaleButton {
+#genderSelectionPanel .femaleButton {
     position: absolute;
     top: 515px;
     right: 0px;
@@ -174,13 +173,8 @@ button {
     background-image: url("../images/femaleLogo.png");
     background-size: cover;
 }
-.recommendedGlassesPanel {
-    position: absolute;
-    width: 1080px;
-    height: 1920px;
+#recommendedGlassesPanel {
     background-image: url("../images/recommendedGlassesPanel.png");
-    background-size: cover;
-    margin: 0 auto;
     display: none;
 }
 .roundFemale {
@@ -261,40 +255,74 @@ button {
     background-color: rgba(59,10,29,0.7);
     color: white;
 }
-.missPanel {
-    position: absolute;
-    width: 1080px;
-    height: 1920px;
+#missPanel {
     background-image: url("../images/missPanel.png");
-    background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
     display: none;
 }
-.missPanel .screenNavBtn {
+#missPanel .screenNavBtn {
     background-image: url("../images/screenNavBtn.png");
 }
-.missPanel .retryBtn {
+#missPanel .retryBtn {
     position: relative;
     top: 1600px;
     width: 70px;
     height: 70px;
     margin: 0 auto;
     background-color: rgb(19, 39, 122);
+    color: white;
+    line-height: 70px;
+    text-align: center;
     border-radius: 100%;
     border-width: 5px;
     border-color: white;
 }
-.hitPanel {
-    position: absolute;
-    width: 1080px;
-    height: 1920px;
+#hitPanel {
     background-image: url("../images/hitPanel.png");
-    background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
     display: none;
 }
-.hitPanel .screenNavBtn {
+#hitPanel .screenNavBtn, #filterPanel .screenNavBtn {
+    bottom: 244px;
     background-image: url("../images/screenNavBtn.png");
+}
+#filterPanel {
+    background-image: url("../images/filterPanel.png");
+    display: none;
+}
+#shutter {
+    background-image: url("../images/shutter.png");
+}
+#filterPanel .filterPanelUpperHalf {
+    background-image: url("../images/filterPanelUpperHalf.png");
+}
+#filterPanel .takePicBtn {
+    position: relative;
+    top: 1495px;
+    width: 134px;
+    height: 134px;
+    background-image: url("../images/takePicBtn.png");
+    margin: 0 auto;
+}
+#filterPanel .deletePicBtn {
+    position: absolute;
+    top: 1150px;
+    left: 980px;
+    width: 70px;
+    height: 70px;
+    background-color: rgb(19, 39, 122);
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 100%;
+    border-width: 5px;
+    border-color: white;
+    display: none;
+}
+#mailSection {
+    background-image: url("../images/mailSectionBkg.png");
+}
+#mailSection img {
+    position: absolute;
+    width: 288px;
+    top: 557px;
+    left: 396px;
 }

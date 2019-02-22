@@ -1,14 +1,40 @@
-var glassesList = ["roundFemale", "roundMale", "squaredFemale", "squaredMale", "ovalFemale", "ovalMale", "triangularFemale", "triangularMale"];
-var swiperGlasses;
-var faceList = [];
-var genderList = [];
-var finalList = [];
+var glassesList;
+var faceList;
+var genderList;
+var finalList;
 var gender;
 var face;
 
 $(document).ready(function(){
-    $(".visual-section").hide();
-    $("#screen1").fadeIn(1000);
+    initAll();
+    $('.filterCarousel').slick({
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 3,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    $(".resetBtn").click(function(){
+        initAll();
+    });
     $("#screen1 .screenNavBtn").click(function(){
         main();
         $("#screen1").fadeOut(800);
@@ -17,38 +43,80 @@ $(document).ready(function(){
     $("#screen2 .screenNavBtn").click(function(){
         $("#screen2").fadeOut(800);
         $("#widgetScreen").fadeIn(800);
+        $("#panelSection").fadeIn(800);
         setTimeout(function(){
-            $(".scanningPanel").fadeIn(800);
+            $("#scanningPanel").fadeIn(800);
+            $(".resetBtn").fadeOut(800);
             faceClassification();
             genderGuess();
         }, 3000);
     });
-    $(".genderSelectionPanel .maleButton").click(function(){
+    $("#genderSelectionPanel .maleButton").click(function(){
         $(".genderSelectionPanel").fadeOut(800);
         genderCallback("male\r\n");
     });
-    $(".genderSelectionPanel .femaleButton").click(function(){
-        $(".genderSelectionPanel").fadeOut(800);
+    $("#genderSelectionPanel .femaleButton").click(function(){
+        $("#genderSelectionPanel").fadeOut(800);
         genderCallback("female\r\n");
     });
-    $(".recommendedGlassesPanel .tellMeButton").click(function(){
-        $(".recommendedGlassesPanel").fadeOut(800);
+    $("#recommendedGlassesPanel .tellMeButton").click(function(){
+        $("#recommendedGlassesPanel").fadeOut(800);
+        $("#recommendedGlasses").remove();
         setTimeout(glassesClassification(), 2000);
     });
-    $(".hitPanel .screenNavBtn").click(function(){
-        $(".hitPanel").fadeOut(800);
-        $(".filterPanel").fadeIn(800);
+    $("#hitPanel .screenNavBtn").click(function(){
+        $("#hitPanel").fadeOut(800);
+        $("#filterPanel").fadeIn(800);
     });
-    $(".missPanel .screenNavBtn").click(function(){
-        $(".missPanel").fadeOut(800);
-        $(".filterPanel").fadeIn(800);
+    $("#missPanel .screenNavBtn").click(function(){
+        $("#missPanel").fadeOut(800);
+        $("#filterPanel").fadeIn(800);
     });
-    $(".missPanel .retryBtn").click(function(){
-        $(".missPanel").fadeOut(800);
+    $("#missPanel .retryBtn").click(function(){
+        $("#missPanel").fadeOut(800);
         glassesClassification();
     });
-    //setTimeout(function(){var canvas = document.body.appendChild(JEEWIDGET.capture_image(15, function(){console.log("callback")}, false))}, 30000);
+    $("#filterPanel .takePicBtn").click(function(){
+        $("#shutter").fadeIn(150);
+        $("#screenshotContainer").show();
+        $("#shutter").fadeOut(150);
+        $(".filterPanelUpperHalf").fadeOut(800);
+        $(".takePicBtn").fadeOut(800);
+        $(".deletePicBtn").fadeIn(800);
+        $("#filterPanel .screenNavBtn").fadeIn(800);
+        var screenshot = new Image();
+        screenshot.id = "jeewidgetScreenshot";
+        var canvas = document.getElementById("JeeWidgetCanvas");
+        screenshot.src = canvas.toDataURL();
+        document.getElementById("screenshotContainer").appendChild(screenshot);
+        document.getElementById("mailSection").prepend(screenshot);
+    });
+    $("#filterPanel .deletePicBtn").click(function(){
+        $("#screenshotContainer").empty();
+        $(".takePicBtn").fadeIn(800);
+        $(".deletePicBtn").fadeOut(800);
+        $("#filterPanel .screenNavBtn").fadeOut(800);
+    });
+    $("#filterPanel .screenNavBtn").click(function(){
+        $("#panelSection").fadeOut(800);
+        $("#widgetScreen").fadeOut(800);
+        $("#mailSection").fadeIn(800);
+    });
 });
+
+function initAll(){
+    glassesList = ["roundFemale", "roundMale", "squaredFemale", "squaredMale", "ovalFemale", "ovalMale", "triangularFemale", "triangularMale"];
+    faceList = [];
+    genderList = [];
+    finalList = [];
+    face = null;
+    gender = null;
+    $("#recommendedGlasses").remove();
+    $("#filterPanel .deletePicBtn").click();
+    $(".removeGlasses").hide();
+    $(".visual-section").hide();
+    $("#screen1").fadeIn(1000);
+}
 
 function faceClassification(){
     var canvas = document.getElementById("JeeWidgetCanvas");
@@ -62,12 +130,6 @@ function faceClassification(){
             console.log( errorThrown );
         }
     });
-    /*
-    link.href = img64;
-    link.download = 'tfInput.jpg';
-    document.body.appendChild(link);
-    link.click();
-    */
 }
 
 function genderGuess(){
@@ -87,6 +149,7 @@ function genderGuess(){
 function glassesClassification(){
     var canvas = document.getElementById("JeeWidgetCanvas");
     var img64 = canvas.toDataURL("glassesImage/jpg");
+    $(".resetBtn").fadeOut(800);
     $.ajax({
         type: "POST",
         url: "glassesClassification.php",
@@ -139,7 +202,7 @@ function faceSlice(faceGlassesList, paramFace){
             break;
         case "glasses\r\n":
             faceGlassesListTemp = [];
-            $(".removeGlassesPanel").fadeIn(800);
+            $(".removeGlasses").fadeIn(800);
             console.log("Please remove your glasses");
             break;
         default:
@@ -157,7 +220,7 @@ function faceCallback(faceResponse){
     if(faceList.length == 0) setTimeout(function(){faceClassification();}, 6000);
     finalList = matchLists(faceList, genderList);
     if(finalList.length != 0){
-        $(".removeGlassesPanel").fadeOut(800);
+        $(".removeGlasses").fadeOut(800);
         displayRecommendedGlasses();
     }
 }
@@ -168,10 +231,10 @@ function genderCallback(genderResponse){
     console.log(genderResponse);
     genderList = genderSlice(glassesList, gender);
     console.log(genderList);
-    if(genderList.length == 0) $(".genderSelectonPanel").fadeIn(800);
+    if(genderList.length == 0) $("#genderSelectionPanel").fadeIn(800);
     finalList = matchLists(faceList, genderList);
     if(finalList.length != 0){
-        $(".removeGlassesPanel").fadeOut(800);
+        $(".removeGlasses").fadeOut(800);
         displayRecommendedGlasses();
     }
 }
@@ -180,13 +243,15 @@ function glassesCallback(glassesResponse){
     console.log(glassesResponse);
     if(glassesResponse == "glassesClassification: ERROR") setTimeout(function(){glassesClassification();}, 1000);
     else if(glassesResponse == "miss"){
-        $(".hitPanel").fadeOut(800);
-        $(".missPanel").fadeIn(800);
+        $(".resetBtn").fadeIn(800);
+        $("#hitPanel").fadeOut(800);
+        $("#missPanel").fadeIn(800);
 
     }
     else if(glassesResponse == "hit"){
-        $(".missPanel").fadeOut(800);
-        $(".hitPanel").fadeIn(800);
+        $(".resetBtn").fadeIn(800);
+        $("#missPanel").fadeOut(800);
+        $("#hitPanel").fadeIn(800);
     }
 }
 
@@ -200,30 +265,31 @@ function matchLists(paramFaceList, paramGenderList){
                 }
             }
         }
-        $(".scanningPanel").fadeOut(800);
+        $("#scanningPanel").fadeOut(800);
     }
     console.log(tempFinalList);
     return tempFinalList;
 }
 
 function displayRecommendedGlasses(){
-    $(".recommendedGlassesPanel").fadeIn(800);
+    $(".resetBtn").fadeIn(800);
+    $("#recommendedGlassesPanel").fadeIn(800);
     switch(finalList[0]){
-        case "roundFemale": $(".recommendedGlassesPanel").append("<div class='roundFemale'></div>");
+        case "roundFemale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='roundFemale'></div>");
             break;
-        case "roundMale": $(".recommendedGlassesPanel").append("<div class='roundMale'></div>");
+        case "roundMale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='roundMale'></div>");
             break;
-        case "squaredFemale": $(".recommendedGlassesPanel").append("<div class='squaredFemale'></div>");
+        case "squaredFemale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='squaredFemale'></div>");
             break;
-        case "squaredMale": $(".recommendedGlassesPanel").append("<div class='squaredMale'></div>");
+        case "squaredMale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='squaredMale'></div>");
             break;
-        case "ovalFemale": $(".recommendedGlassesPanel").append("<div class='ovalFemale'></div>");
+        case "ovalFemale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='ovalFemale'></div>");
             break;
-        case "ovalMale": $(".recommendedGlassesPanel").append("<div class='ovalMale'></div>");
+        case "ovalMale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='ovalMale'></div>");
             break;
-        case "triangularFemale": $(".recommendedGlassesPanel").append("<div class='triangularFemale'></div>");
+        case "triangularFemale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='triangularFemale'></div>");
             break;
-        case "triangularMale": $(".recommendedGlassesPanel").append("<div class='triangularMale'></div>");
+        case "triangularMale": $("#recommendedGlassesPanel").append("<div id='recommendedGlasses' class='triangularMale'></div>");
             break;
         default:
             console.log("displayRecommendedGlasses: ERROR");
