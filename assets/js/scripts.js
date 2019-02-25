@@ -78,24 +78,23 @@ $(document).ready(function(){
     });
     $("#filterPanel .takePicBtn").click(function(){
         $("#shutter").fadeIn(150);
-        $("#screenshotContainer").show();
+        $("#screenshotContainerMain").show();
         $("#shutter").fadeOut(150);
         $(".filterPanelUpperHalf").fadeOut(800);
         $(".takePicBtn").fadeOut(800);
         $(".deletePicBtn").fadeIn(800);
         $("#filterPanel .screenNavBtn").fadeIn(800);
-        var screenshot = new Image();
-        screenshot.id = "jeewidgetScreenshot";
-        var canvas = document.getElementById("JeeWidgetCanvas");
-        screenshot.src = canvas.toDataURL();
-        document.getElementById("screenshotContainer").appendChild(screenshot);
-        document.getElementById("mailSection").prepend(screenshot);
+        $("#filterPanel .filterPanelUpperHalf").fadeIn(800);
+        snapAndDisplay("screenshotContainerMain", "append");
+        snapAndDisplay("screenshotContainerMail", "append");
     });
     $("#filterPanel .deletePicBtn").click(function(){
-        $("#screenshotContainer").empty();
+        $("#screenshotContainerMain").empty();
+        $("#screenshotContainerMail").empty();
         $(".takePicBtn").fadeIn(800);
         $(".deletePicBtn").fadeOut(800);
         $("#filterPanel .screenNavBtn").fadeOut(800);
+        $("#filterPanel .filterPanelUpperHalf").fadeOut(800);
     });
     $("#filterPanel .screenNavBtn").click(function(){
         $("#panelSection").fadeOut(800);
@@ -293,5 +292,22 @@ function displayRecommendedGlasses(){
             break;
         default:
             console.log("displayRecommendedGlasses: ERROR");
+    }
+}
+
+function snapAndDisplay(container, mode){
+    var screenshot = new Image();
+    screenshot.id = "jeewidgetScreenshot";
+    var canvas = document.getElementById("JeeWidgetCanvas");
+    screenshot.src = canvas.toDataURL();
+    switch(mode){
+        case "append":
+            document.getElementById(container).append(screenshot);
+            break;
+        case "prepend":
+            document.getElementById(container).prepend(screenshot);
+            break;
+        default:
+            console.log("snapAndDisplay: ERROR");
     }
 }

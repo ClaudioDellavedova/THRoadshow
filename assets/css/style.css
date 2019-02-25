@@ -284,12 +284,12 @@ button {
     bottom: 244px;
     background-image: url("../images/screenNavBtn.png");
 }
+#shutter {
+    background-image: url("../images/shutter.png");
+}
 #filterPanel {
     background-image: url("../images/filterPanel.png");
     display: none;
-}
-#shutter {
-    background-image: url("../images/shutter.png");
 }
 #filterPanel .filterPanelUpperHalf {
     background-image: url("../images/filterPanelUpperHalf.png");
@@ -320,7 +320,7 @@ button {
 #mailSection {
     background-image: url("../images/mailSectionBkg.png");
 }
-#mailSection img {
+#screenshotContainerMail img {
     position: absolute;
     width: 288px;
     top: 557px;
