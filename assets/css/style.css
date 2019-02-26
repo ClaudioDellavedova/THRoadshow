@@ -284,6 +284,9 @@ button {
     bottom: 244px;
     background-image: url("../images/screenNavBtn.png");
 }
+#screenshotContainerMain img, #screenshotContainerMain canvas{
+    position: absolute;
+}
 #shutter {
     background-image: url("../images/shutter.png");
 }
@@ -292,11 +295,14 @@ button {
     display: none;
 }
 #filterPanel .filterPanelUpperHalf {
+    width: 1080px;
+    height: 1920px;
     background-image: url("../images/filterPanelUpperHalf.png");
 }
 #filterPanel .takePicBtn {
-    position: relative;
+    position: absolute;
     top: 1495px;
+    left: 471px;
     width: 134px;
     height: 134px;
     background-image: url("../images/takePicBtn.png");
@@ -317,12 +323,31 @@ button {
     border-color: white;
     display: none;
 }
+#filterPanel .filterCarousel {
+    position: absolute;
+    width: 756px;
+    height: 352px;
+    left: 190px;
+    top: 1127px;
+    margin-top: 33px;
+}
+.filter img {
+    width: 198px;
+}
+.filter canvas {
+    width: 198px;
+}
 #mailSection {
     background-image: url("../images/mailSectionBkg.png");
 }
-#screenshotContainerMail img {
+#screenshotContainerMail {
     position: absolute;
     width: 288px;
     top: 557px;
     left: 396px;
+    height: 510px;
+}
+#screenshotContainerMail img, #screenshotContainerMail canvas {
+    position: absolute;
+    width: 288px;
 }

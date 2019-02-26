@@ -7,31 +7,6 @@ var face;
 
 $(document).ready(function(){
     initAll();
-    $('.filterCarousel').slick({
-        centerMode: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 3
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 1
-            }
-          }
-        ]
-      });
     $(".resetBtn").click(function(){
         initAll();
     });
@@ -52,7 +27,7 @@ $(document).ready(function(){
         }, 3000);
     });
     $("#genderSelectionPanel .maleButton").click(function(){
-        $(".genderSelectionPanel").fadeOut(800);
+        $("#genderSelectionPanel").fadeOut(800);
         genderCallback("male\r\n");
     });
     $("#genderSelectionPanel .femaleButton").click(function(){
@@ -84,17 +59,147 @@ $(document).ready(function(){
         $(".takePicBtn").fadeOut(800);
         $(".deletePicBtn").fadeIn(800);
         $("#filterPanel .screenNavBtn").fadeIn(800);
-        $("#filterPanel .filterPanelUpperHalf").fadeIn(800);
-        snapAndDisplay("screenshotContainerMain", "append");
-        snapAndDisplay("screenshotContainerMail", "append");
+        $("#filterPanel .filterPanelUpperHalf").show();
+        $("#filterPanel .filterCarousel").show();
+        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain1");
+        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain2");
+        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain3");
+        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain4");
+        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail1");
+        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail2");
+        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail3");
+        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail4");
+        snapAndDisplay("filter1", "append", "screenshot1");
+        snapAndDisplay("filter2", "append", "screenshot2");
+        snapAndDisplay("filter3", "append", "screenshot3");
+        snapAndDisplay("filter4", "append", "screenshot4");
+        Caman("#screenshot1", function () {
+            this.brightness(0).render();
+        });
+        Caman("#screenshotMain1", function () {
+            this.brightness(0).render();
+        });
+        Caman("#screenshotMail1", function () {
+            this.brightness(0).render();
+        });
+        Caman("#screenshot2", function () {
+            this.sepia(50).render();
+        });
+        Caman("#screenshotMain2", function () {
+            this.sepia(50).render();
+        });
+        Caman("#screenshotMail2", function () {
+            this.sepia(50).render();
+        });
+        Caman("#screenshot3", function () {
+            this.contrast(30).render();
+        });
+        Caman("#screenshotMain3", function () {
+            this.contrast(30).render();
+        });
+        Caman("#screenshotMail3", function () {
+            this.contrast(30).render();
+        });
+        Caman("#screenshot4", function () {
+            this.hue(50).render();
+        });
+        Caman("#screenshotMain4", function () {
+            this.hue(50).render();
+        });
+        Caman("#screenshotMail4", function () {
+            this.hue(50).render();
+        });
+        $('.filterCarousel').slick({
+            centerMode: true,
+            infinite: false,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    });
+    $(".filterCarousel").on("afterChange", function(event, slick, currentSlide){
+        var currentFilter = $(".filterCarousel").slick("slickCurrentSlide");
+        switch(currentFilter){
+            case 0:
+                $("#screenshotMain1").css("z-index", 10);
+                $("#screenshotMain2").css("z-index", 9);
+                $("#screenshotMain3").css("z-index", 9);
+                $("#screenshotMain4").css("z-index", 9);
+                $("#screenshotMail1").css("z-index", 10);
+                $("#screenshotMail2").css("z-index", 9);
+                $("#screenshotMail3").css("z-index", 9);
+                $("#screenshotMail4").css("z-index", 9);
+                $(".filterPanelUpperHalf").fadeOut(800);
+                break;
+            case 1:
+                $("#screenshotMain1").css("z-index", 9);
+                $("#screenshotMain2").css("z-index", 10);
+                $("#screenshotMain3").css("z-index", 9);
+                $("#screenshotMain4").css("z-index", 9);
+                $("#screenshotMail1").css("z-index", 9);
+                $("#screenshotMail2").css("z-index", 10);
+                $("#screenshotMail3").css("z-index", 9);
+                $("#screenshotMail4").css("z-index", 9);
+                $(".filterPanelUpperHalf").fadeOut(800);
+                break;
+            case 2:
+                $("#screenshotMain1").css("z-index", 9);
+                $("#screenshotMain2").css("z-index", 9);
+                $("#screenshotMain3").css("z-index", 10);
+                $("#screenshotMain4").css("z-index", 9);
+                $("#screenshotMail1").css("z-index", 9);
+                $("#screenshotMail2").css("z-index", 9);
+                $("#screenshotMail3").css("z-index", 10);
+                $("#screenshotMail4").css("z-index", 9);
+                $(".filterPanelUpperHalf").fadeOut(800);
+                break;
+            case 3:
+                $("#screenshotMain1").css("z-index", 9);
+                $("#screenshotMain2").css("z-index", 9);
+                $("#screenshotMain3").css("z-index", 9);
+                $("#screenshotMain4").css("z-index", 10);
+                $("#screenshotMail1").css("z-index", 9);
+                $("#screenshotMail2").css("z-index", 9);
+                $("#screenshotMail3").css("z-index", 9);
+                $("#screenshotMail4").css("z-index", 10);
+                $(".filterPanelUpperHalf").fadeOut(800);
+                break;
+            default:
+                console.log("applyFilter: ERROR");
+        }
     });
     $("#filterPanel .deletePicBtn").click(function(){
         $("#screenshotContainerMain").empty();
         $("#screenshotContainerMail").empty();
+        $("#filter1").empty();
+        $("#filter2").empty();
+        $("#filter3").empty();
+        $("#filter4").empty();
+        $('.filterCarousel').slick('unslick');
         $(".takePicBtn").fadeIn(800);
         $(".deletePicBtn").fadeOut(800);
         $("#filterPanel .screenNavBtn").fadeOut(800);
         $("#filterPanel .filterPanelUpperHalf").fadeOut(800);
+        $("#filterPanel .filterCarousel").fadeOut(800);
     });
     $("#filterPanel .screenNavBtn").click(function(){
         $("#panelSection").fadeOut(800);
@@ -295,9 +400,9 @@ function displayRecommendedGlasses(){
     }
 }
 
-function snapAndDisplay(container, mode){
+function snapAndDisplay(container, mode, id){
     var screenshot = new Image();
-    screenshot.id = "jeewidgetScreenshot";
+    screenshot.id = id;
     var canvas = document.getElementById("JeeWidgetCanvas");
     screenshot.src = canvas.toDataURL();
     switch(mode){
