@@ -351,3 +351,30 @@ button {
     position: absolute;
     width: 288px;
 }
+#mailTextBox {
+    position: absolute;
+    width: 640px;
+    height: 68px;
+    top: 1242px;
+    left: 220px;
+    line-height: 68px;
+    font-size: 42px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: transparent;
+    color: white;
+}
+#mailSection .sendMailBtn {
+    position: relative;
+    top: 1550px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    background-color: rgb(19, 39, 122);
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 100%;
+    border-width: 5px;
+    border-color: white;
+}

@@ -206,6 +206,9 @@ $(document).ready(function(){
         $("#widgetScreen").fadeOut(800);
         $("#mailSection").fadeIn(800);
     });
+    $(".sendMailBtn").click(function(){
+        sendMail();
+    });
 });
 
 function initAll(){
@@ -219,6 +222,7 @@ function initAll(){
     $("#filterPanel .deletePicBtn").click();
     $(".removeGlasses").hide();
     $(".visual-section").hide();
+    document.getElementById("mailTextBox").value = "";
     $("#screen1").fadeIn(1000);
 }
 
@@ -254,6 +258,7 @@ function glassesClassification(){
     var canvas = document.getElementById("JeeWidgetCanvas");
     var img64 = canvas.toDataURL("glassesImage/jpg");
     $(".resetBtn").fadeOut(800);
+    $("#scanningPanel").fadeIn(800);
     $.ajax({
         type: "POST",
         url: "glassesClassification.php",
@@ -350,12 +355,14 @@ function glassesCallback(glassesResponse){
         $(".resetBtn").fadeIn(800);
         $("#hitPanel").fadeOut(800);
         $("#missPanel").fadeIn(800);
+        $("#scanningPanel").fadeOut(800);
 
     }
     else if(glassesResponse == "hit"){
         $(".resetBtn").fadeIn(800);
         $("#missPanel").fadeOut(800);
         $("#hitPanel").fadeIn(800);
+        $("#scanningPanel").fadeOut(800);
     }
 }
 
@@ -415,4 +422,32 @@ function snapAndDisplay(container, mode, id){
         default:
             console.log("snapAndDisplay: ERROR");
     }
+}
+
+function sendMail(){
+    var mailCanvas;
+    var mailAddress = document.getElementById("mailTextBox").value;
+    if($("#screenshotMail4").css("z-index") == 10){
+        mailCanvas = document.getElementById("screenshotMail4");
+    }else if($("#screenshotMail3").css("z-index") == 10){
+        mailCanvas = document.getElementById("screenshotMail3");
+    }else if($("#screenshotMail2").css("z-index") == 10){
+        mailCanvas = document.getElementById("screenshotMail2");
+    }else{
+        mailCanvas = document.getElementById("screenshotMail1");
+    }
+    var img64 = mailCanvas.toDataURL("mailImage/jpg");
+    $.ajax({
+        type: "POST",
+        url: "mailSender.php",
+        data: { imagebase64: img64, mailSendTo: mailAddress},
+        success: mailCallback,
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
+    });
+}
+
+function mailCallback(mailResponse){
+    console.log(mailResponse);
 }
