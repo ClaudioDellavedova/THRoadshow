@@ -204,6 +204,7 @@ $(document).ready(function(){
     $("#filterPanel .screenNavBtn").click(function(){
         $("#panelSection").fadeOut(800);
         $("#widgetScreen").fadeOut(800);
+        JEEWIDGET.pause();
         $("#mailSection").fadeIn(800);
     });
     $(".sendMailBtn").click(function(){

@@ -182,6 +182,8 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
+    background-image: url("../images/round_female.jpg");
     background-color: rgb(0, 0, 0);
     margin: 0 auto;
 }
@@ -190,6 +192,8 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
+    background-image: url("../images/round_male.jpg");
     background-color: rgb(0, 0, 255);
     margin: 0 auto;
 }
@@ -198,6 +202,8 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
+    background-image: url("../images/squared_female.jpg");
     background-color: rgb(0, 255, 0);
     margin: 0 auto;
 }
@@ -206,6 +212,8 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
+    background-image: url("../images/squared_male.jpg");
     background-color: rgb(0, 255, 255);
     margin: 0 auto;
 }
@@ -214,6 +222,7 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
     background-color: rgb(255, 0, 0);
     margin: 0 auto;
 }
@@ -222,6 +231,7 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
     background-color: rgb(255, 0, 255);
     margin: 0 auto;
 }
@@ -230,6 +240,8 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
+    background-image: url("../images/triangular_female.jpg");
     background-color: rgb(255, 255, 0);
     margin: 0 auto;
 }
@@ -238,6 +250,8 @@ button {
     top: 1148px;
     width: 500px;
     height: 500px;
+    background-size: contain;
+    background-image: url("../images/triangular_male.jpg");
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
 }
