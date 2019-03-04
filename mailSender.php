@@ -7,27 +7,27 @@
     require './PHPMailer/src/PHPMailer.php';
     require './PHPMailer/src/SMTP.php';
 
-    //$email_to = $_POST['mailSendTo'];
+    $email_to = $_POST['mailSendTo'];
 
-    $email_to = "andrea.giugni@netizens.it";
+    //$email_to = "andrea.giugni@netizens.it";
 
     $email_subject = "Tommy Hilfigher Roadshow Magic Mirror";
 
-    //$imgdata = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['imagebase64']));
+    $imgdata = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['imagebase64']));
 
-    //$imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";
+    $imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";
 
-    //file_put_contents($imgfilepath,$imgdata);
+    file_put_contents($imgfilepath,$imgdata);
 
-    $mail = new PHPMailer(true);                                      // Passing `true` enables exceptions
+    $mail = new PHPMailer(true);                                  // Passing `true` enables exceptions
         try {
                                                                   //Server settings
             $mail->SMTPDebug = 2;                                 // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'authsmtp.register.it';                        // Specify main and backup SMTP servers
+            $mail->Host = 'authsmtp.register.it';                 // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'smtp@per-net.it';  // SMTP username
-            $mail->Password = 'P3r-N3t2018.';                    // SMTP password
+            $mail->Username = 'smtp@per-net.it';                  // SMTP username
+            $mail->Password = 'P3r-N3t2018.';                     // SMTP password
             $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
 
@@ -39,7 +39,7 @@
             //$mail->addBCC('bcc@example.com');
 
             //Attachments
-            //$mail->addAttachment('E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');    // Optional name
+            $mail->addAttachment('E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');    // Optional name
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML

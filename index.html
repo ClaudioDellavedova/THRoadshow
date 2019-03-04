@@ -58,10 +58,11 @@
   <body>
     <main>
       <section id="screen1" class="visual-section">
-        <div class="screenNavBtn"></div>
+        <div class="skipBtn"></div>
+        <div class="screenNavBtn blink"></div>
       </section>
       <section id="screen2" class="visual-section">
-        <div class="screenNavBtn"></div>
+        <div class="screenNavBtn blink"></div>
       </section>
       <section id="widgetScreen" class="visual-section">
         <div id="JeeWidget">
@@ -69,6 +70,7 @@
         </div>
       </section>
       <section id="panelSection" class="visual-section">
+        <div class="startScanBtn blink">START</div>
         <div id="scanningPanel" class="visual-section">
           <div class="removeGlasses">PLEASE,<br/>REMOVE YOUR<br/>GLASSES</div>
         </div>
@@ -77,28 +79,33 @@
           <div class="femaleButton"></div>
         </div>
         <div id="recommendedGlassesPanel" class="visual-section">
-          <div class="tellMeButton">TELL ME HOW I LOOK</div>
+            <div class="infoTellMe">TRY THEM ON AND</div>
+          <div class="tellMeButton blink">TELL ME HOW I LOOK</div>
         </div>
         <div id="hitPanel" class="visual-section">
-          <div class="screenNavBtn"></div>
+          <div class="screenNavBtn blink"></div>
         </div>
         <div id="missPanel" class="visual-section">
-          <div class="retryBtn">RETRY</div>
-          <div class="screenNavBtn"></div>
+          <div class="retryBtn blink">RETRY</div>
+          <div class="screenNavBtn blink"></div>
         </div>
         <div id="screenshotContainerMain" class="visual-section"></div>
         <div id="shutter" class="visual-section"></div>
         <div id="filterPanel" class="visual-section">
           <div class="filterPanelUpperHalf"></div>
-          <div class="takePicBtn"></div>
+          <div class="takePicBtn spin"></div>
+          <div class="loading spin"></div>
+          <div class="loadingText blink">LOADING</div>
           <div class="deletePicBtn">DELETE</div>
-          <div class="screenNavBtn"></div>
+          <div class="screenNavBtn blink"></div>
           <div class="filterCarousel">
+            <input type="hidden" id="renderCounter" value=0 />
             <div class="filter" id="filter1"></div>
             <div class="filter" id="filter2"></div>
             <div class="filter" id="filter3"></div>
             <div class="filter" id="filter4"></div>
           </div>
+          <div class="triangle"></div>
         </div>
       </section>
       <section id="mailSection" class="visual-section">

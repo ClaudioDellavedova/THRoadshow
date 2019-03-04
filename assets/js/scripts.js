@@ -4,9 +4,18 @@ var genderList;
 var finalList;
 var gender;
 var face;
+var scanCount = 0;
+var first = 0;
 
 $(document).ready(function(){
     initAll();
+    $(".skipBtn").click(function(){
+        main();
+        $("#widgetScreen").fadeIn(800);
+        $("#screen1").fadeOut(800);
+        $("#panelSection").fadeIn(800);
+        $("#filterPanel").fadeIn(800);
+    });
     $(".resetBtn").click(function(){
         initAll();
     });
@@ -19,12 +28,20 @@ $(document).ready(function(){
         $("#screen2").fadeOut(800);
         $("#widgetScreen").fadeIn(800);
         $("#panelSection").fadeIn(800);
-        setTimeout(function(){
-            $("#scanningPanel").fadeIn(800);
-            $(".resetBtn").fadeOut(800);
+        $(".startScanBtn").fadeIn(800);
+    });
+    $(".startScanBtn").click(function(){
+        $(".startScanBtn").fadeOut(800);
+        $("#scanningPanel").fadeIn(800);
+        $(".resetBtn").hide();
+        if(scanCount == 0){
             faceClassification();
             genderGuess();
-        }, 3000);
+        }
+        else{
+            glassesClassification();
+        }
+        scanCount++;
     });
     $("#genderSelectionPanel .maleButton").click(function(){
         $("#genderSelectionPanel").fadeOut(800);
@@ -37,7 +54,7 @@ $(document).ready(function(){
     $("#recommendedGlassesPanel .tellMeButton").click(function(){
         $("#recommendedGlassesPanel").fadeOut(800);
         $("#recommendedGlasses").remove();
-        setTimeout(glassesClassification(), 2000);
+        $(".startScanBtn").fadeIn(800);
     });
     $("#hitPanel .screenNavBtn").click(function(){
         $("#hitPanel").fadeOut(800);
@@ -49,93 +66,93 @@ $(document).ready(function(){
     });
     $("#missPanel .retryBtn").click(function(){
         $("#missPanel").fadeOut(800);
-        glassesClassification();
+        $(".startScanBtn").fadeIn(800);
     });
     $("#filterPanel .takePicBtn").click(function(){
-        $("#shutter").fadeIn(150);
+        JEEWIDGET.pause();
+        //$("#shutter").fadeIn(150);
+        $("#filterPanel .loading").show();
+        $("#filterPanel .loadingText").show();
         $("#screenshotContainerMain").show();
-        $("#shutter").fadeOut(150);
-        $(".filterPanelUpperHalf").fadeOut(800);
-        $(".takePicBtn").fadeOut(800);
-        $(".deletePicBtn").fadeIn(800);
-        $("#filterPanel .screenNavBtn").fadeIn(800);
+        //$("#shutter").fadeOut(150);
+        $(".filterPanelUpperHalf").hide();
+        $(".takePicBtn").hide();
         $("#filterPanel .filterPanelUpperHalf").show();
         $("#filterPanel .filterCarousel").show();
-        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain1");
-        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain2");
-        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain3");
-        snapAndDisplay("screenshotContainerMain", "prepend", "screenshotMain4");
-        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail1");
-        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail2");
-        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail3");
-        snapAndDisplay("screenshotContainerMail", "prepend", "screenshotMail4");
-        snapAndDisplay("filter1", "append", "screenshot1");
-        snapAndDisplay("filter2", "append", "screenshot2");
-        snapAndDisplay("filter3", "append", "screenshot3");
-        snapAndDisplay("filter4", "append", "screenshot4");
-        Caman("#screenshot1", function () {
-            this.brightness(0).render();
-        });
+        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain1");
+        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain2");
+        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain3");
+        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain4");
         Caman("#screenshotMain1", function () {
-            this.brightness(0).render();
-        });
-        Caman("#screenshotMail1", function () {
-            this.brightness(0).render();
-        });
-        Caman("#screenshot2", function () {
-            this.sepia(50).render();
+            this.render();
         });
         Caman("#screenshotMain2", function () {
-            this.sepia(50).render();
-        });
-        Caman("#screenshotMail2", function () {
-            this.sepia(50).render();
-        });
-        Caman("#screenshot3", function () {
-            this.contrast(30).render();
+            this.nostalgia().render();
         });
         Caman("#screenshotMain3", function () {
-            this.contrast(30).render();
-        });
-        Caman("#screenshotMail3", function () {
-            this.contrast(30).render();
-        });
-        Caman("#screenshot4", function () {
-            this.hue(50).render();
+            this.pinhole().render();
         });
         Caman("#screenshotMain4", function () {
-            this.hue(50).render();
+            this.herMajesty().render();
         });
-        Caman("#screenshotMail4", function () {
-            this.hue(50).render();
-        });
-        $('.filterCarousel').slick({
-            centerMode: true,
-            infinite: false,
-            centerPadding: '60px',
-            slidesToShow: 3,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 1
-                    }
-                }
-            ]
+        Caman.Event.listen("renderFinished", function (job) {
+            var temp = parseInt($("#renderCounter").val()) + 1;
+            console.log("pass");
+            $("#renderCounter").val(temp).trigger("change");
         });
     });
+    $("#renderCounter").on("change", function(){
+        if($("#renderCounter").val() == 4){
+            setTimeout(function(){
+                console.log("ready");
+                snapAndDisplay("screenshotMain1", "filter1", "prepend", "screenshot1");
+                snapAndDisplay("screenshotMain2", "filter2", "prepend", "screenshot2");
+                snapAndDisplay("screenshotMain3", "filter3", "prepend", "screenshot3");
+                snapAndDisplay("screenshotMain4", "filter4", "prepend", "screenshot4");
+                snapAndDisplay("screenshotMain1", "screenshotContainerMail", "prepend", "screenshotMail1");
+                snapAndDisplay("screenshotMain2", "screenshotContainerMail", "prepend", "screenshotMail2");
+                snapAndDisplay("screenshotMain3", "screenshotContainerMail", "prepend", "screenshotMail3");
+                snapAndDisplay("screenshotMain4", "screenshotContainerMail", "prepend", "screenshotMail4");
+                if(first == 0){
+                    $('.filterCarousel').slick({
+                        centerMode: true,
+                        infinite: false,
+                        centerPadding: '60px',
+                        slidesToShow: 3,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    arrows: false,
+                                    centerMode: true,
+                                    centerPadding: '40px',
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    arrows: false,
+                                    centerMode: true,
+                                    centerPadding: '40px',
+                                    slidesToShow: 1               
+                                }
+                            }
+                        ]
+                    });
+                    first = 1;
+                }
+                $(".loading").hide();
+                $(".loadingText").hide();
+                $(".deletePicBtn").show();
+                $("#filterPanel .screenNavBtn").show();
+                $(".filterCarousel").slick("slickGoTo", 0, true);
+                $(".triangle").show();
+            }, 100);
+            $("#renderCounter").val(0);
+        }
+        console.log($("#renderCounter").val());
+    })
     $(".filterCarousel").on("afterChange", function(event, slick, currentSlide){
         var currentFilter = $(".filterCarousel").slick("slickCurrentSlide");
         switch(currentFilter){
@@ -188,18 +205,21 @@ $(document).ready(function(){
         }
     });
     $("#filterPanel .deletePicBtn").click(function(){
+        JEEWIDGET.resume();
         $("#screenshotContainerMain").empty();
         $("#screenshotContainerMail").empty();
         $("#filter1").empty();
         $("#filter2").empty();
         $("#filter3").empty();
         $("#filter4").empty();
-        $('.filterCarousel').slick('unslick');
-        $(".takePicBtn").fadeIn(800);
-        $(".deletePicBtn").fadeOut(800);
-        $("#filterPanel .screenNavBtn").fadeOut(800);
-        $("#filterPanel .filterPanelUpperHalf").fadeOut(800);
-        $("#filterPanel .filterCarousel").fadeOut(800);
+        //$('.filterCarousel').slick('unslick');
+        $(".takePicBtn").hide();
+        $(".triangle").hide();
+        $(".deletePicBtn").hide();
+        $("#filterPanel .screenNavBtn").hide();
+        $("#filterPanel .filterPanelUpperHalf").hide();
+        $("#filterPanel .filterCarousel").hide();
+        $("#filterPanel .takePicBtn").show();
     });
     $("#filterPanel .screenNavBtn").click(function(){
         $("#panelSection").fadeOut(800);
@@ -220,11 +240,22 @@ function initAll(){
     face = null;
     gender = null;
     $("#recommendedGlasses").remove();
-    $("#filterPanel .deletePicBtn").click();
     $(".removeGlasses").hide();
     $(".visual-section").hide();
     document.getElementById("mailTextBox").value = "";
     $("#screen1").fadeIn(1000);
+    $("#screenshotContainerMain").empty();
+    $("#screenshotContainerMail").empty();
+    $("#filter1").empty();
+    $("#filter2").empty();
+    $("#filter3").empty();
+    $("#filter4").empty();
+    $(".takePicBtn").fadeIn(800);
+    $(".deletePicBtn").fadeOut(800);
+    $("#filterPanel .screenNavBtn").fadeOut(800);
+    $("#filterPanel .filterPanelUpperHalf").fadeOut(800);
+    $("#filterPanel .filterCarousel").fadeOut(800);
+    scanCount = 0;
 }
 
 function faceClassification(){
@@ -258,7 +289,7 @@ function genderGuess(){
 function glassesClassification(){
     var canvas = document.getElementById("JeeWidgetCanvas");
     var img64 = canvas.toDataURL("glassesImage/jpg");
-    $(".resetBtn").fadeOut(800);
+    $(".resetBtn").hide();
     $("#scanningPanel").fadeIn(800);
     $.ajax({
         type: "POST",
@@ -408,11 +439,11 @@ function displayRecommendedGlasses(){
     }
 }
 
-function snapAndDisplay(container, mode, id){
+function snapAndDisplay(canvas, container, mode, id){
     var screenshot = new Image();
     screenshot.id = id;
-    var canvas = document.getElementById("JeeWidgetCanvas");
-    screenshot.src = canvas.toDataURL();
+    var tempCanvas = document.getElementById(canvas);
+    screenshot.src = tempCanvas.toDataURL();
     switch(mode){
         case "append":
             document.getElementById(container).append(screenshot);
@@ -450,5 +481,8 @@ function sendMail(){
 }
 
 function mailCallback(mailResponse){
+    setTimeout(function(){
+        initAll();
+    }, 5000);
     console.log(mailResponse);
 }
