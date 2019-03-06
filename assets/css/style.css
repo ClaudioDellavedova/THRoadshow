@@ -11,6 +11,9 @@
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
 }
+*:focus {
+    outline: none;
+}
 a {color: #eee; text-decoration: none}
 a:hover {color: blue;}
 body {
@@ -56,8 +59,8 @@ body {
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
-b{font-weight: bold;}
-br{line-height: 1;}
+b {font-weight: bold; }
+br { line-height: 1; }
 .btn-animation {
     -webkit-animation: btn-animation 1.2s linear infinite;
     -moz-animation: btn-animation 1.2s linear infinite;
@@ -95,7 +98,7 @@ button {
     -webkit-user-select: none;
 }
 /* ############################################################## */
-.visual-section{
+.visual-section {
     position: absolute;
     overflow: hidden;
     width: 1080px;
@@ -104,11 +107,14 @@ button {
     background-size: cover;
 }
 .inner-section{width:100%;height:100%;}
-#screen1{
+#screen1 {
     background-image: url("../images/screen1full.png");
 }
-#screen2{
+#screen2 {
     background-image: url("../images/screen2full.png");
+}
+#screen2.modified {
+    background-image: url("../images/screen2bkg.png");
 }
 .screenNavBtn {
     position: absolute;
@@ -167,12 +173,13 @@ button {
 }
 .startScanBtn {
     position: absolute;
-    top: 1600px;
-    left: 505px;
-    width: 70px;
-    height: 70px;
+    top: 1495px;
+    left: 471px;
+    width: 134px;
+    height: 134px;
+    background-image: url("../images/loadingImage.png");
+    background-size: cover;
     margin: 0 auto;
-    background-color: rgb(19, 39, 122);
     color: white;
     line-height: 70px;
     text-align: center;
@@ -181,37 +188,78 @@ button {
     border-color: white;
     display: none;
 }
-#scanningPanel .removeGlasses {
+.startScanBtn.modified {
+    top: 1465px;
+    left: 875px;
+    display: block;
+}
+.scanMask {
     position: absolute;
-    width: 1080px;
-    height: 220px;
-    top: 220px;
+    top: 376px;
+    left: 117px;
+    width: 843px;
+    height: 801px;
+    background-image: url("../images/scanMask.png");
+    display: none;
+}
+#screen2 p {
+    position: absolute;
+    top: 1465px;
+    left: 875px;
+    width: 134px;
+    height: 134px;
+    color: white;
+    line-height: 134px;
+    text-align: center;
+}
+#panelSection p {
+    position: absolute;
+    top: 1495px;
+    left: 471px;
+    width: 134px;
+    height: 134px;
+    color: white;
+    line-height: 134px;
+    text-align: center;
+    display: none;
+}
+.removeGlasses {
+    position: absolute;
+    width: 813px;
+    height: 376px;
+    top: 0px;
+    margin-left: 133px;
+    margin-right: 133px;
+    background-color: rgba(210,6,42,0.7);
     color: rgba(255,255,255,0.9);
+    line-height: 125px;
     font-family: 'Futura Std';
     font-weight: bold;
-    font-size: 100px;
+    font-size: 95px;
     text-align: center;
     display: none;
 }
 #genderSelectionPanel {
-    display: none;
-}
-#genderSelectionPanel .maleButton {
     position: absolute;
-    top: 590px;
-    left: 0px;
-    width: 500px;
-    height: 500px;
-    background-image: url("../images/maleLogo.png");
-    background-size: cover;
+    width: 1080px;
+    height: 1920px;
+    background-image: url("../images/genderSelectionPanel.png");
+    display: none;
 }
 #genderSelectionPanel .femaleButton {
     position: absolute;
-    top: 590px;
+    top: 1265px;
+    left: 0px;
+    width: 519px;
+    height: 182px;
+    background-size: cover;
+}
+#genderSelectionPanel .maleButton {
+    position: absolute;
+    top: 1265px;
     right: 0px;
-    width: 500px;
-    height: 500px;
-    background-image: url("../images/femaleLogo.png");
+    width: 519px;
+    height: 182px;
     background-size: cover;
 }
 #recommendedGlassesPanel {
@@ -221,8 +269,8 @@ button {
 .roundFemale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-image: url("../images/round_female.jpg");
     background-color: rgb(0, 0, 0);
@@ -231,8 +279,8 @@ button {
 .roundMale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-image: url("../images/round_male.jpg");
     background-color: rgb(0, 0, 255);
@@ -241,8 +289,8 @@ button {
 .squaredFemale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-image: url("../images/squared_female.jpg");
     background-color: rgb(0, 255, 0);
@@ -251,8 +299,8 @@ button {
 .squaredMale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-image: url("../images/squared_male.jpg");
     background-color: rgb(0, 255, 255);
@@ -261,8 +309,8 @@ button {
 .ovalFemale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-color: rgb(255, 0, 0);
     margin: 0 auto;
@@ -270,8 +318,8 @@ button {
 .ovalMale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-color: rgb(255, 0, 255);
     margin: 0 auto;
@@ -279,8 +327,8 @@ button {
 .triangularFemale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-image: url("../images/triangular_female.jpg");
     background-color: rgb(255, 255, 0);
@@ -289,14 +337,14 @@ button {
 .triangularMale {
     position: relative;
     top: 1148px;
-    width: 500px;
-    height: 500px;
+    width: 410px;
+    height: 410px;
     background-size: contain;
     background-image: url("../images/triangular_male.jpg");
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
 }
-.infoTellMe {
+.tellMeButton {
     position: absolute;
     right: 0;
     bottom: 150px;
@@ -304,22 +352,8 @@ button {
     height: 75px;
     line-height: 75px;
     vertical-align: middle;
-    text-align: left;
-    padding-left: 185px;
-    font-size: 15px;
-    background-color: rgba(59,10,29,0.7);
-    color: white;
-}
-.tellMeButton {
-    position: absolute;
-    right: 0;
-    bottom: 150px;
-    width: 350px;
-    height: 75px;
-    line-height: 75px;
-    vertical-align: middle;
     text-align: center;
-    padding-right: 135px;
+    padding-right: 290px;
     font-size: 15px;
     background-color: rgba(59,10,29,0.7);
     color: white;
@@ -330,7 +364,7 @@ button {
 }
 #missPanel .retryBtn {
     position: relative;
-    top: 1600px;
+    top: 1660px;
     width: 70px;
     height: 70px;
     margin: 0 auto;
@@ -356,13 +390,18 @@ button {
     background-image: url("../images/shutter.png");
 }
 #filterPanel {
-    background-image: url("../images/filterPanel.png");
     display: none;
 }
 #filterPanel .filterPanelUpperHalf {
     width: 1080px;
     height: 1920px;
     background-image: url("../images/filterPanelUpperHalf.png");
+}
+#filterPanel .filterPanelLowerHalf {
+    width: 1080px;
+    height: 1920px;
+    background-image: url("../images/filterPanelLowerHalf.png");
+    display: none;
 }
 #filterPanel .takePicBtn {
     position: absolute;
@@ -373,13 +412,22 @@ button {
     background-image: url("../images/takePicBtn.png");
     display: none;
 }
+#filterPanel .cameraLogo {
+    position: absolute;
+    top: 1495px;
+    left: 471px;
+    width: 134px;
+    height: 134px;
+    background-image: url("../images/cameraLogo.png");
+    display: none;
+}
 #filterPanel .loading {
     position: absolute;
     top: 1200px;
     left: 400px;
     width: 276px;
     height: 276px;
-    background-image: url("../images/loadingIcon.png");
+    background-image: url("../images/loadingImage.png");
     background-size: cover;
     display: none;
 }
@@ -395,7 +443,7 @@ button {
     font-size: 32px;
     display: none;
 }
-#filterPanel .triangle{
+#filterPanel .triangle {
     position: absolute;
     top: 1525px;
     left: 543px;
@@ -404,6 +452,15 @@ button {
     background-size: contain;
     background-image: url("../images/triangolo.png");
     display: none;
+}
+.triangle .triangleText {
+    position: absolute;
+    width: 470px;
+    top: 40px;
+    right: -215px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
 }
 #filterPanel .deletePicBtn {
     position: absolute;
@@ -430,7 +487,7 @@ button {
     display: none;
 }
 .filter img, .filter canvas {
-    width: 198px;
+    width: 200px;
 }
 #mailSection {
     background-image: url("../images/mailSectionBkg.png");
@@ -458,6 +515,14 @@ button {
     border-color: transparent;
     background-color: transparent;
     color: white;
+}
+#mailSection p {
+    position: absolute;
+    width: 100%;
+    top: 1335px;
+    text-align: center;
+    color: rgb(19, 39, 122);
+    font-size: 20px;
 }
 #mailSection .sendMailBtn {
     position: relative;

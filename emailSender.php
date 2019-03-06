@@ -11,7 +11,7 @@
 
     //$email_to = "andrea.giugni@netizens.it";
 
-    $email_subject = "Tommy Hilfigher Roadshow Magic Mirror";
+    $email_subject = "Tommy Hilfigher Magic Mirror";
 
     $imgdata = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['imagebase64']));
 
@@ -20,6 +20,13 @@
     file_put_contents($imgfilepath,$imgdata);
 
     $mail = new PHPMailer(true);                                  // Passing `true` enables exceptions
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
         try {
                                                                   //Server settings
             $mail->SMTPDebug = 2;                                 // Enable verbose debug output
@@ -32,7 +39,7 @@
             $mail->Port = 465;                                    // TCP port to connect to
 
             //Recipients
-            $mail->setFrom('info@secondopinion.per-net.it', 'Claudio Dellavedova');
+            $mail->setFrom('claudio.dellavedova@netizens.it', 'Claudio Dellavedova');
             $mail->addAddress($email_to);
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');

@@ -1,0 +1,10 @@
+triangular
+0.7659458
+glasses
+0.10032359
+round
+0.07936268
+oval
+0.053297397
+squared
+0.0010705341
