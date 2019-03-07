@@ -18,6 +18,33 @@ $(document).ready(function(){
         $("#filterPanel").fadeIn(800);
         $("#filterPanel .filterPanelLowerHalf").hide();
     });
+    $(".model1").click(function(){
+        JEEWIDGET.load("rayban_aviator_or_vertFlash");
+    });
+    $(".model2").click(function(){
+        JEEWIDGET.load("carrera_118S_black");
+    });
+    $(".model3").click(function(){
+        JEEWIDGET.load("frogskins_black_brown");
+    });
+    $(".model4").click(function(){
+        JEEWIDGET.load("flak_black_blue");
+    });
+    $(".model5").click(function(){
+        JEEWIDGET.load("latch_havana_green");
+    });
+    $(".model6").click(function(){
+        JEEWIDGET.load("holbrook_black_gray");
+    });
+    $(".model7").click(function(){
+        JEEWIDGET.load("catalyst_black_orange");
+    });
+    $(".model8").click(function(){
+        JEEWIDGET.load("oakley_radar_path_black_silver");
+    });
+    $(".modelNull").click(function(){
+        JEEWIDGET.load("empty");
+    });
     $(".resetBtn").click(function(){
         initAll();
     });
@@ -26,11 +53,15 @@ $(document).ready(function(){
         $("#screen2").fadeIn(800);
         $(".startScanBtn.modified").fadeIn(800);
     });
+    $("#screen1 .modified").click(function(){
+        $(".scanMask").fadeIn(800);
+    });
     $("#screen2 .screenNavBtn").click(function(){
         $("#screen2").fadeOut(800);
         $("#panelSection").fadeIn(800);
         $(".startScanBtn").fadeIn(800);
         $(".scanMask").fadeIn(800);
+        $(".scanLine").fadeIn(800);
         $("#panelSection p").fadeIn(800);
     });
     $("#screen2 .modified").click(function(){
@@ -41,9 +72,9 @@ $(document).ready(function(){
     $(".startScanBtn").click(function(){
         $("#panelSection").fadeIn(800);
         $(".startScanBtn").fadeOut(800);
-        $(".scanMask").fadeOut(800);
         $("#panelSection p").hide();
         $("#scanningPanel").fadeIn(800);
+        $(".scanLine").fadeIn(800);
         $(".resetBtn").hide();
         if(scanCount == 0){
             faceClassification();
@@ -430,6 +461,7 @@ function glassesClassification(){
     var img64 = canvas.toDataURL("glassesImage/jpg");
     $(".resetBtn").hide();
     $("#scanningPanel").fadeIn(800);
+    $(".scanLine").fadeIn(800);
     $.ajax({
         type: "POST",
         url: "glassesClassification.php",
@@ -484,6 +516,7 @@ function faceSlice(faceGlassesList, paramFace){
             faceGlassesListTemp = [];
             $(".removeGlasses").fadeIn(800);
             $("#scanningPanel").fadeOut(800);
+            $(".scanLine").fadeOut(800);
             $(".startScanBtn").fadeIn(800);
             $(".scanMask").fadeIn(800);
             $("#panelSection p").fadeIn(800);
@@ -505,6 +538,7 @@ function faceCallback(faceResponse){
     if(finalList.length != 0){
         $(".removeGlasses").fadeOut(800);
         displayRecommendedGlasses();
+        $(".scanMask").fadeOut(800);
     }
 }
 
@@ -530,13 +564,14 @@ function glassesCallback(glassesResponse){
         $("#hitPanel").fadeOut(800);
         $("#missPanel").fadeIn(800);
         $("#scanningPanel").fadeOut(800);
-
+        $(".scanLine").fadeOut(800);
     }
     else if(glassesResponse == "hit"){
         $(".resetBtn").fadeIn(800);
         $("#missPanel").fadeOut(800);
         $("#hitPanel").fadeIn(800);
         $("#scanningPanel").fadeOut(800);
+        $(".scanLine").fadeOut(800);
     }
 }
 
@@ -551,6 +586,7 @@ function matchLists(paramFaceList, paramGenderList){
             }
         }
         $("#scanningPanel").fadeOut(800);
+        $(".scanLine").fadeOut(800);
     }
     console.log(tempFinalList);
     return tempFinalList;

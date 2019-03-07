@@ -43,12 +43,13 @@
             $errorThrown = 1;
             echo "glassesClassification: ERROR";
     }
+    $oExec = $WshShell->Run('wmic process where name="python.exe" CALL setpriority "realtime"', 7, false);
     //While per ricerca esistenza file output.txt
     //Quando trovato, leggere il contenuto, interpretarlo se necessario e inviare la risposta al client
     if($errorThrown == 0){    
         $outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";
         while(!file_exists($outputpath)){
-
+            
         }
         sleep(1);
         $outputfile = fopen($outputpath, "r") or die("Unable to open file!");

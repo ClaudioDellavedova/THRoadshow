@@ -59,6 +59,27 @@ body {
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
+@keyframes pendulum {
+    0% { transform: translateY(-460px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+    25%{box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 1);}
+    50% { transform: translateY(400px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+    75%{box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 1);}
+    100% { transform: translateY(-460px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+}
+@-webkit-keyframes pendulum {
+    0% { transform: translateY(-460px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+    25%{box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 1);}
+    50% { transform: translateY(400px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+    75%{box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 1);}
+    100% { transform: translateY(-460px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+}
+@-moz-keyframes pendulum {
+    0% { transform: translateY(-460px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+    25%{box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 1);}
+    50% { transform: translateY(400px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+    75%{box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 1);}
+    100% { transform: translateY(-460px); box-shadow: 0 0px 90px 10px rgba(19, 39, 122, 0.4);}
+}
 b {font-weight: bold; }
 br { line-height: 1; }
 .btn-animation {
@@ -82,12 +103,12 @@ br { line-height: 1; }
     -o-animation: spin 2.0s linear infinite;
     animation: spin 2.0s linear infinite;
 }
-.noAnim {
-    -webkit-animation: none;
-    -moz-animation: none;
-    -ms-animation: none;
-    -o-animation: none;
-    animation: none;
+.pendulum {
+    -webkit-animation: pendulum 4.0s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+    -moz-animation: pendulum 4.0s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+    -ms-animation: pendulum 4.0s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+    -o-animation: pendulum 4.0s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+    animation: pendulum 4.0s cubic-bezier(0.6, 0, 0.4, 1) infinite;
 }
 button {
     -webkit-appearance: none;
@@ -139,9 +160,10 @@ button {
     display: block;
 }
 #resetHeader {
-    position: absolute;
-    width: 1080px;
+    position: relative;
+    width: 150px;
     height: 70px;
+    margin: 0 auto;
 }
 #resetHeader .resetBtn {
     position: relative;
@@ -195,11 +217,22 @@ button {
 }
 .scanMask {
     position: absolute;
-    top: 376px;
+    top: 416px;
     left: 117px;
     width: 843px;
-    height: 801px;
+    height: 854px;
     background-image: url("../images/scanMask.png");
+    background-size: contain;
+    background-position: center;
+    display: none;
+}
+.scanLine {
+    position: relative;;
+    top: 865px;
+    width: 820px;
+    height: 5px;
+    margin: 0 auto;
+    background-color: rgba(19, 39, 122, 0.7);    
     display: none;
 }
 #screen2 p {
@@ -538,12 +571,26 @@ button {
     border-width: 5px;
     border-color: white;
 }
-.skipBtn{
+.skipBtn {
     position: relative;
     top: 1600px;
     width: 70px;
     height: 70px;
     margin: 0 auto;
+    background-color: rgb(19, 39, 122);
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 100%;
+    border-width: 5px;
+    border-color: white;
+}
+.tryGlasses {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+    margin-left: 5px;
     background-color: rgb(19, 39, 122);
     color: white;
     line-height: 70px;

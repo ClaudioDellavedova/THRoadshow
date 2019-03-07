@@ -18,12 +18,13 @@
 
     $WshShell = new COM("WScript.Shell"); 
     $oExec = $WshShell->Run("python.exe E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_gender/label_image.py --graph E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_gender/retrained_graph.pb --labels E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_gender/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/genderImage.jpg", 7, false);
+    $oExec = $WshShell->Run('wmic process where name="python.exe" CALL setpriority "realtime"', 7, false);
 
     //While per ricerca esistenza file output.txt
     //Quando trovato, leggere il contenuto, interpretarlo se necessario e inviare la risposta al client
     $outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/genderOutput.txt";
     while(!file_exists($outputpath)){
-
+        
     }
     sleep(1);
     $outputfile = fopen($outputpath, "r") or die("Unable to open file!");
