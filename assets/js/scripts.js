@@ -19,16 +19,16 @@ $(document).ready(function(){
         $("#filterPanel .filterPanelLowerHalf").hide();
     });
     $(".model1").click(function(){
-        JEEWIDGET.load("rayban_aviator_or_vertFlash");
+        JEEWIDGET.load("netizens_01");
     });
     $(".model2").click(function(){
-        JEEWIDGET.load("carrera_118S_black");
+        JEEWIDGET.load("netizens_02");
     });
     $(".model3").click(function(){
-        JEEWIDGET.load("frogskins_black_brown");
+        JEEWIDGET.load("netizens_03");
     });
     $(".model4").click(function(){
-        JEEWIDGET.load("flak_black_blue");
+        JEEWIDGET.load("netizens_04");
     });
     $(".model5").click(function(){
         JEEWIDGET.load("latch_havana_green");
@@ -105,14 +105,110 @@ $(document).ready(function(){
         $("#panelSection p").fadeIn(800);
     });
     $("#hitPanel .screenNavBtn").click(function(){
-        $("#hitPanel").fadeOut(800);
+        $("#missPanel").fadeOut(800);
         $("#filterPanel").fadeIn(800);
-        $("#filterPanel .filterPanelLowerHalf").hide();
+        //$("#shutter").fadeIn(150);
+        $("#filterPanel .filterPanelUpperHalf").fadeIn(800);
+        $("#filterPanel .filterPanelLowerHalf").fadeIn(800);
+        $(".resetBtn").fadeOut(800);
+        //$("#shutter").fadeOut(150);
+        //$(".takePicBtn").fadeOut(800);
+        //$(".cameraLogo").fadeOut(800);
+        $('.filterCarousel').slick({
+            centerMode: true,
+            infinite: false,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1               
+                    }
+                }
+            ]
+        });
+        $(".filterSlide").on("tap", function(){
+            var currentFilter = $(this).attr("slideindex");
+            $("#JeeWidgetCanvas").attr("class", "").addClass("filter"+currentFilter);
+            $(".filterPanelUpperHalf").fadeOut(800);
+        });
+        $(".resetBtn").fadeIn(800);
+        //$(".deletePicBtn").fadeIn(800);
+        $("#filterPanel .screenNavBtn").fadeIn(800);
+        $("#filterPanel .filterCarousel").fadeIn(800);
+        $(".filterCarousel").slick("slickGoTo", 0, true);
+        //$(".triangle").fadeIn(800);
+        navigator.mediaDevices.getUserMedia({video: {facingMode: "user", aspectRatio: 0.56}}).then(function(stream){
+            document.querySelectorAll(".filterSlide video").forEach(el=>{
+                el.srcObject = stream;
+            });
+        });
     });
     $("#missPanel .screenNavBtn").click(function(){
         $("#missPanel").fadeOut(800);
         $("#filterPanel").fadeIn(800);
-        $("#filterPanel .filterPanelLowerHalf").hide();
+        //$("#shutter").fadeIn(150);
+        $("#filterPanel .filterPanelUpperHalf").fadeIn(800);
+        $("#filterPanel .filterPanelLowerHalf").fadeIn(800);
+        $(".resetBtn").fadeOut(800);
+        //$("#shutter").fadeOut(150);
+        //$(".takePicBtn").fadeOut(800);
+        //$(".cameraLogo").fadeOut(800);
+        $('.filterCarousel').slick({
+            centerMode: true,
+            infinite: false,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1               
+                    }
+                }
+            ]
+        });
+        $(".filterSlide").on("tap", function(){
+            var currentFilter = $(this).attr("slideindex");
+            $("#JeeWidgetCanvas").attr("class", "").addClass("filter"+currentFilter);
+            $(".filterPanelUpperHalf").fadeOut(800);
+        });
+        $(".resetBtn").fadeIn(800);
+        //$(".deletePicBtn").fadeIn(800);
+        $("#filterPanel .screenNavBtn").fadeIn(800);
+        $("#filterPanel .filterCarousel").fadeIn(800);
+        $(".filterCarousel").slick("slickGoTo", 0, true);
+        //$(".triangle").fadeIn(800);
+        navigator.mediaDevices.getUserMedia({video: {facingMode: "user", aspectRatio: 0.56}}).then(function(stream){
+            document.querySelectorAll(".filterSlide video").forEach(el=>{
+                el.srcObject = stream;
+            });
+        });
     });
     $("#missPanel .retryBtn").click(function(){
         $("#missPanel").fadeOut(800);
@@ -121,237 +217,15 @@ $(document).ready(function(){
         $("#panelSection p").fadeIn(800);
     });
     $("#filterPanel .takePicBtn").click(function(){
-        JEEWIDGET.pause();
-        //$("#shutter").fadeIn(150);
-        $("#filterPanel .filterPanelUpperHalf").show();
-        $("#filterPanel .filterPanelLowerHalf").show();
-        $("#filterPanel .loading").show();
-        $("#filterPanel .loadingText").show();
-        $(".resetBtn").hide();
-        $("#screenshotContainerMain").show();
-        //$("#shutter").fadeOut(150);
-        $(".takePicBtn").hide();
-        $(".cameraLogo").hide();
-        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain1");
-        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain2");
-        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain3");
-        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain4");
-        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain5");
-        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMain", "prepend", "screenshotMain6");
-        Caman("#screenshotMain1", function () {
-            this.render();
-        });
-        Caman("#screenshotMain2", function () {
-            this.glowingSun().render();
-        });
-        Caman("#screenshotMain3", function () {
-            this.hazyDays().render();
-        });
-        Caman("#screenshotMain4", function () {
-            this.pinhole().render();
-        });
-        Caman("#screenshotMain5", function () {
-            this.nostalgia().render();
-        });
-        Caman("#screenshotMain6", function () {
-            this.sunrise().render();
-        });
-        Caman.Event.listen("renderFinished", function (job) {
-            var temp = parseInt($("#renderCounter").val()) + 1;
-            console.log("pass");
-            $("#renderCounter").val(temp).trigger("change");
-        });
-    });
-    $("#renderCounter").on("change", function(){
-        var sum = (snapCount * (snapCount + 1)) / 2;
-        if($("#renderCounter").val() % (6 * sum) == 0){
-            setTimeout(function(){
-                console.log("ready");
-                snapAndDisplay("screenshotMain1", "filter1", "prepend", "screenshot1");
-                snapAndDisplay("screenshotMain2", "filter2", "prepend", "screenshot2");
-                snapAndDisplay("screenshotMain3", "filter3", "prepend", "screenshot3");
-                snapAndDisplay("screenshotMain4", "filter4", "prepend", "screenshot4");
-                snapAndDisplay("screenshotMain5", "filter5", "prepend", "screenshot5");
-                snapAndDisplay("screenshotMain6", "filter6", "prepend", "screenshot6");
-                snapAndDisplay("screenshotMain1", "screenshotContainerMail", "prepend", "screenshotMail1");
-                snapAndDisplay("screenshotMain2", "screenshotContainerMail", "prepend", "screenshotMail2");
-                snapAndDisplay("screenshotMain3", "screenshotContainerMail", "prepend", "screenshotMail3");
-                snapAndDisplay("screenshotMain4", "screenshotContainerMail", "prepend", "screenshotMail4");
-                snapAndDisplay("screenshotMain5", "screenshotContainerMail", "prepend", "screenshotMail5");
-                snapAndDisplay("screenshotMain6", "screenshotContainerMail", "prepend", "screenshotMail6");
-                if(first == 0){
-                    $('.filterCarousel').slick({
-                        centerMode: true,
-                        infinite: false,
-                        centerPadding: '60px',
-                        slidesToShow: 3,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    arrows: false,
-                                    centerMode: true,
-                                    centerPadding: '40px',
-                                    slidesToShow: 3
-                                }
-                            },
-                            {
-                                breakpoint: 480,
-                                settings: {
-                                    arrows: false,
-                                    centerMode: true,
-                                    centerPadding: '40px',
-                                    slidesToShow: 1               
-                                }
-                            }
-                        ]
-                    });
-                    first = 1;
-                }
-                $(".loading").hide();
-                $(".loadingText").hide();
-                $(".resetBtn").show();
-                $(".deletePicBtn").show();
-                $("#filterPanel .screenNavBtn").show();
-                $("#filterPanel .filterCarousel").show();
-                $(".filterCarousel").slick("slickGoTo", 0, true);
-                $(".triangle").show();
-            }, 100);
-        }
-        console.log($("#renderCounter").val());
-    })
-    $(".filterCarousel").on("afterChange", function(event, slick, currentSlide){
-        var currentFilter = $(".filterCarousel").slick("slickCurrentSlide");
-        switch(currentFilter){
-            case 0:
-                $("#screenshotMain1").css("z-index", 10);
-                $("#screenshotMain2").css("z-index", 9);
-                $("#screenshotMain3").css("z-index", 9);
-                $("#screenshotMain4").css("z-index", 9);
-                $("#screenshotMain5").css("z-index", 9);
-                $("#screenshotMain6").css("z-index", 9);
-                $("#screenshotMail1").css("z-index", 10);
-                $("#screenshotMail2").css("z-index", 9);
-                $("#screenshotMail3").css("z-index", 9);
-                $("#screenshotMail4").css("z-index", 9);
-                $("#screenshotMail5").css("z-index", 9);
-                $("#screenshotMail6").css("z-index", 9);
-                $("#filter1 img").css("border", "2px solid white");
-                $("#filter2 img").css("border", "2px solid transparent");
-                $("#filter3 img").css("border", "2px solid transparent");
-                $("#filter4 img").css("border", "2px solid transparent");
-                $("#filter5 img").css("border", "2px solid transparent");
-                $("#filter6 img").css("border", "2px solid transparent");
-                $(".filterPanelUpperHalf").fadeOut(800);
-                break;
-            case 1:
-                $("#screenshotMain1").css("z-index", 9);
-                $("#screenshotMain2").css("z-index", 10);
-                $("#screenshotMain3").css("z-index", 9);
-                $("#screenshotMain4").css("z-index", 9);
-                $("#screenshotMail1").css("z-index", 9);
-                $("#screenshotMain5").css("z-index", 9);
-                $("#screenshotMain6").css("z-index", 9);
-                $("#screenshotMail2").css("z-index", 10);
-                $("#screenshotMail3").css("z-index", 9);
-                $("#screenshotMail4").css("z-index", 9);
-                $("#screenshotMail5").css("z-index", 9);
-                $("#screenshotMail6").css("z-index", 9);
-                $("#filter1 img").css("border", "2px solid transparent");
-                $("#filter2 img").css("border", "2px solid white");
-                $("#filter3 img").css("border", "2px solid transparent");
-                $("#filter4 img").css("border", "2px solid transparent");
-                $("#filter5 img").css("border", "2px solid transparent");
-                $("#filter6 img").css("border", "2px solid transparent");
-                $(".filterPanelUpperHalf").fadeOut(800);
-                break;
-            case 2:
-                $("#screenshotMain1").css("z-index", 9);
-                $("#screenshotMain2").css("z-index", 9);
-                $("#screenshotMain3").css("z-index", 10);
-                $("#screenshotMain4").css("z-index", 9);
-                $("#screenshotMain5").css("z-index", 9);
-                $("#screenshotMain6").css("z-index", 9);
-                $("#screenshotMail1").css("z-index", 9);
-                $("#screenshotMail2").css("z-index", 9);
-                $("#screenshotMail3").css("z-index", 10);
-                $("#screenshotMail4").css("z-index", 9);
-                $("#screenshotMail5").css("z-index", 9);
-                $("#screenshotMail6").css("z-index", 9);
-                $("#filter1 img").css("border", "2px solid transparent");
-                $("#filter2 img").css("border", "2px solid transparent");
-                $("#filter3 img").css("border", "2px solid white");
-                $("#filter4 img").css("border", "2px solid transparent");
-                $("#filter5 img").css("border", "2px solid transparent");
-                $("#filter6 img").css("border", "2px solid transparent");
-                $(".filterPanelUpperHalf").fadeOut(800);
-                break;
-            case 3:
-                $("#screenshotMain1").css("z-index", 9);
-                $("#screenshotMain2").css("z-index", 9);
-                $("#screenshotMain3").css("z-index", 9);
-                $("#screenshotMain4").css("z-index", 10);
-                $("#screenshotMain5").css("z-index", 9);
-                $("#screenshotMain6").css("z-index", 9);
-                $("#screenshotMail1").css("z-index", 9);
-                $("#screenshotMail2").css("z-index", 9);
-                $("#screenshotMail3").css("z-index", 9);
-                $("#screenshotMail4").css("z-index", 10);
-                $("#screenshotMail5").css("z-index", 9);
-                $("#screenshotMail6").css("z-index", 9);
-                $("#filter1 img").css("border", "2px solid transparent");
-                $("#filter2 img").css("border", "2px solid transparent");
-                $("#filter3 img").css("border", "2px solid transparent");
-                $("#filter4 img").css("border", "2px solid white");
-                $("#filter5 img").css("border", "2px solid transparent");
-                $("#filter6 img").css("border", "2px solid transparent");
-                $(".filterPanelUpperHalf").fadeOut(800);
-                break;
-            case 4:
-                $("#screenshotMain1").css("z-index", 9);
-                $("#screenshotMain2").css("z-index", 9);
-                $("#screenshotMain3").css("z-index", 9);
-                $("#screenshotMain4").css("z-index", 9);
-                $("#screenshotMain5").css("z-index", 10);
-                $("#screenshotMain6").css("z-index", 9);
-                $("#screenshotMail1").css("z-index", 9);
-                $("#screenshotMail2").css("z-index", 9);
-                $("#screenshotMail3").css("z-index", 9);
-                $("#screenshotMail4").css("z-index", 9);
-                $("#screenshotMail5").css("z-index", 10);
-                $("#screenshotMail6").css("z-index", 9);
-                $("#filter1 img").css("border", "2px solid transparent");
-                $("#filter2 img").css("border", "2px solid transparent");
-                $("#filter3 img").css("border", "2px solid transparent");
-                $("#filter4 img").css("border", "2px solid transparent");
-                $("#filter5 img").css("border", "2px solid white");
-                $("#filter6 img").css("border", "2px solid transparent");
-                $(".filterPanelUpperHalf").fadeOut(800);
-                break;
-            case 5:
-                $("#screenshotMain1").css("z-index", 9);
-                $("#screenshotMain2").css("z-index", 9);
-                $("#screenshotMain3").css("z-index", 9);
-                $("#screenshotMain4").css("z-index", 9);
-                $("#screenshotMain5").css("z-index", 9);
-                $("#screenshotMain6").css("z-index", 10);
-                $("#screenshotMail1").css("z-index", 9);
-                $("#screenshotMail2").css("z-index", 9);
-                $("#screenshotMail3").css("z-index", 9);
-                $("#screenshotMail4").css("z-index", 9);
-                $("#screenshotMail5").css("z-index", 9);
-                $("#screenshotMail6").css("z-index", 10);
-                $("#filter1 img").css("border", "2px solid transparent");
-                $("#filter2 img").css("border", "2px solid transparent");
-                $("#filter3 img").css("border", "2px solid transparent");
-                $("#filter4 img").css("border", "2px solid transparent");
-                $("#filter5 img").css("border", "2px solid transparent");
-                $("#filter6 img").css("border", "2px solid white");
-                $(".filterPanelUpperHalf").fadeOut(800);
-                break;
-            default:
-                console.log("applyFilter: ERROR");
-        }
+        $("#panelSection").fadeOut(800);
+        $("#widgetScreen").fadeOut(800);
+        //JEEWIDGET.pause();
+        document.getElementById("mailSectionText").textContent = "FILL IN YOUR E-MAIL ADDRESS AND WE'LL SEND YOUR PHOTO";
+        $("#mailSectionText").css("color", "rgb(19, 39, 122)");
+        $(".sendMailBtn").show();
+        snapCount++;
+        $("#mailSection").fadeIn(800);
+        snapAndDisplay("JeeWidgetCanvas", "screenshotContainerMail", "prepend", "mailPic");
     });
     $("#filterPanel .deletePicBtn").click(function(){
         JEEWIDGET.resume();
@@ -363,7 +237,6 @@ $(document).ready(function(){
         $("#filter4").empty();
         $("#filter5").empty();
         $("#filter6").empty();
-        //$('.filterCarousel').slick('unslick');
         $(".takePicBtn").hide();
         $(".cameraLogo").hide();
         $(".triangle").hide();
@@ -393,6 +266,7 @@ $(document).ready(function(){
 
 function initAll(){
     main();
+    $("#JeeWidgetCanvas").attr("class", "").addClass("filter0");
     if($("#filterPanel .filterCarousel").is(":visible")){
         snapCount++;
     }
@@ -422,7 +296,7 @@ function initAll(){
     $(".triangle").fadeOut(800);
     $(".deletePicBtn").fadeOut(800);
     $("#filterPanel .screenNavBtn").fadeOut(800);
-    $("#filterPanel .filterCarousel").fadeOut(800);
+    //$("#filterPanel .filterCarousel").fadeOut(800);
     $("#filterPanel .takePicBtn").fadeIn(800);
     $("#filterPanel .cameraLogo").fadeIn(800);
     scanCount = 0;
@@ -565,6 +439,7 @@ function glassesCallback(glassesResponse){
         $("#missPanel").fadeIn(800);
         $("#scanningPanel").fadeOut(800);
         $(".scanLine").fadeOut(800);
+        $(".scanMask").fadeOut(800);
     }
     else if(glassesResponse == "hit"){
         $(".resetBtn").fadeIn(800);
@@ -572,6 +447,7 @@ function glassesCallback(glassesResponse){
         $("#hitPanel").fadeIn(800);
         $("#scanningPanel").fadeOut(800);
         $(".scanLine").fadeOut(800);
+        $(".scanMask").fadeOut(800);
     }
 }
 
@@ -645,19 +521,7 @@ function sendMail(){
     if(validateEmail(mailAddress)){
         document.getElementById("mailSectionText").textContent = "THANK YOU, WE SENT YOUR PHOTO!";
         $("#mailSectionText").css("color", "rgb(19, 39, 122)");
-        if($("#screenshotMail6").css("z-index") == 10){
-            img64 = document.getElementById("screenshotMail4").src;
-        }else if($("#screenshotMail5").css("z-index") == 10){
-            img64 = document.getElementById("screenshotMail3").src;
-        }else if($("#screenshotMail4").css("z-index") == 10){
-            img64 = document.getElementById("screenshotMail3").src;
-        }else if($("#screenshotMail3").css("z-index") == 10){
-            img64 = document.getElementById("screenshotMail3").src;
-        }else if($("#screenshotMail2").css("z-index") == 10){
-            img64 = document.getElementById("screenshotMail2").src;
-        }else{
-            img64 = document.getElementById("screenshotMail1").src;
-        }
+        img64 = document.getElementById("mailPic").src;
         $.ajax({
             type: "POST",
             url: "emailSender.php",

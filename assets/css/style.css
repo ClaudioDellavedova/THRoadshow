@@ -438,7 +438,7 @@ button {
 }
 #filterPanel .takePicBtn {
     position: absolute;
-    top: 1495px;
+    top: 1525px;
     left: 471px;
     width: 134px;
     height: 134px;
@@ -447,7 +447,7 @@ button {
 }
 #filterPanel .cameraLogo {
     position: absolute;
-    top: 1495px;
+    top: 1525px;
     left: 471px;
     width: 134px;
     height: 134px;
@@ -599,3 +599,37 @@ button {
     border-width: 5px;
     border-color: white;
 }
+.filter1 {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.filter2 {
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
+}
+.filter3 {
+    -webkit-filter: url("#blueMonochrome");
+    filter:  url("#blueMonochrome");
+}
+.filter4 {
+    -webkit-filter: url("#redMonochrome");
+    filter: url("#redMonochrome");
+}
+.filter5 {
+    -webkit-filter: contrast(200%);
+            filter: contrast(200%);
+}
+.filterBrightness {
+    -webkit-filter: brightness(30%);
+    filter: brightness(30%);
+}
+.filterSlide video {
+    max-height: 356px;
+    transform: rotateY(180deg);
+}
+.defs-only {
+    position: absolute;
+    height: 0; width: 0;
+    overflow: none;
+    left: -100%;
+  }
