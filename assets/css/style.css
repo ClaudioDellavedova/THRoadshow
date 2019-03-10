@@ -224,6 +224,7 @@ button {
     background-image: url("../images/scanMask.png");
     background-size: contain;
     background-position: center;
+    opacity: 0.5;
     display: none;
 }
 .scanLine {
@@ -438,7 +439,7 @@ button {
 }
 #filterPanel .takePicBtn {
     position: absolute;
-    top: 1525px;
+    top: 1475px;
     left: 471px;
     width: 134px;
     height: 134px;
@@ -447,7 +448,7 @@ button {
 }
 #filterPanel .cameraLogo {
     position: absolute;
-    top: 1525px;
+    top: 1475px;
     left: 471px;
     width: 134px;
     height: 134px;
@@ -622,6 +623,20 @@ button {
 .filterBrightness {
     -webkit-filter: brightness(30%);
     filter: brightness(30%);
+}
+.filterSlide {
+    height: 252px;
+    overflow: hidden;
+}
+.filterLabel {
+    position: relative;
+    width: 199px;
+    height: 40px;
+    bottom: 148px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    background-color: rgba(100,100,100,0.5);
 }
 .filterSlide video {
     max-height: 356px;

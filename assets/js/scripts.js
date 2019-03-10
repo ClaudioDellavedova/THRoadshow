@@ -31,16 +31,16 @@ $(document).ready(function(){
         JEEWIDGET.load("netizens_04");
     });
     $(".model5").click(function(){
-        JEEWIDGET.load("latch_havana_green");
+        JEEWIDGET.load("netizens_05");
     });
     $(".model6").click(function(){
-        JEEWIDGET.load("holbrook_black_gray");
+        JEEWIDGET.load("netizens_06");
     });
     $(".model7").click(function(){
-        JEEWIDGET.load("catalyst_black_orange");
+        JEEWIDGET.load("netizens_07");
     });
     $(".model8").click(function(){
-        JEEWIDGET.load("oakley_radar_path_black_silver");
+        JEEWIDGET.load("netizens_08");
     });
     $(".modelNull").click(function(){
         JEEWIDGET.load("empty");
