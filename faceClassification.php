@@ -33,9 +33,9 @@
     sleep(1);
     $outputfile = fopen($outputpath, "r") or die("Unable to open file!");
     $string = fgets($outputfile);
-    if($string == "glasses"){
+    if($string == "glasses\r\n"){
         $perc = (float) fgets($outputfile);
-        if($perc < 0.97){
+        if($perc < 0.9){
             $string = fgets($outputfile);
             fclose($outputfile);
             unlink($outputpath);

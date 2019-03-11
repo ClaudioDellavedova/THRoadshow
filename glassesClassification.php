@@ -82,7 +82,7 @@
         $string = fgets($outputfile);
         $perc = (float) fgets($outputfile);
         if($string == "hit\r\n"){
-            if($perc < 0.6){
+            if($perc < 0.75){
                 fclose($outputfile);
                 unlink($outputpath);
                 echo "miss";

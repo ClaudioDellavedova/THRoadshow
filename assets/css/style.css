@@ -144,7 +144,8 @@ button {
     width: 260px;
     height: 130px;
     opacity: 1;
-    background-image: url("../images/screenNavBtn.png");
+    background-image: url("../images/screenNavBtn1.png");
+    background-size: contain;
 }
 #THFooter {
     position: absolute;
@@ -637,6 +638,7 @@ button {
     text-align: center;
     color: white;
     background-color: rgba(100,100,100,0.5);
+    font-size: 20px;
 }
 .filterSlide video {
     max-height: 356px;
@@ -647,4 +649,18 @@ button {
     height: 0; width: 0;
     overflow: none;
     left: -100%;
-  }
+}
+.mailBackBtn {
+    position: relative;
+    top: 70px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    background-color: rgb(19, 39, 122);
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 100%;
+    border-width: 5px;
+    border-color: white;
+}

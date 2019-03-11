@@ -259,6 +259,13 @@ $(document).ready(function(){
         snapCount++;
         $("#mailSection").fadeIn(800);
     });
+    $(".mailBackBtn").click(function(){
+        $("#panelSection").fadeIn(800);
+        $("#widgetScreen").fadeIn(800);
+        JEEWIDGET.resume();
+        $("#screenshotContainerMail").empty();
+        $("#mailSection").fadeOut(800);
+    });
     $(".sendMailBtn").click(function(){
         sendMail();
     });
