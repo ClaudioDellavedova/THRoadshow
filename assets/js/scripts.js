@@ -289,7 +289,7 @@ function initAll(){
     $(".visual-section").hide();
     $("#widgetScreen").fadeIn(800);
     document.getElementById("mailTextBox").value = "";
-    $("#screen1").fadeIn(1000);
+    $("#screen1").show();
     $("#screenshotContainerMain").empty();
     $("#screenshotContainerMail").empty();
     $("#filter1").empty();
