@@ -16,16 +16,16 @@
 
     $imgdata = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['imagebase64']));
     
-    //$imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg";            //Netizens
+    $imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg";            //Netizens
     //$imgfilepath = "C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg";            //Home
-    $imgfilepath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg";
+    //$imgfilepath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg";
 
     file_put_contents($imgfilepath,$imgdata);
 
     $WshShell = new COM("WScript.Shell");
 
     //Netizens
-    /* switch($glasses){
+    switch($glasses){
         case "roundFemale": $oExec = $WshShell->Run("python.exe E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/label_image.py --graph E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/retrained_graph.pb --labels E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg", 7, false);
             break;
         case "roundMale": $oExec = $WshShell->Run("python.exe E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_rmglasses/label_image.py --graph E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_rmglasses/retrained_graph.pb --labels E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/tf_files/tf_files_rmglasses/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg", 7, false);
@@ -46,7 +46,7 @@
             $errorThrown = 1;
             echo "glassesClassification: ERROR";
     } 
-    $oExec = $WshShell->Run('wmic process where name="python.exe" CALL setpriority "realtime"', 7, false); */
+    $oExec = $WshShell->Run('wmic process where name="python.exe" CALL setpriority "realtime"', 7, false);
     //Home
     /* switch($glasses){
         case "roundFemale": $oExec = $WshShell->Run("py.exe C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/label_image.py --graph C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/retrained_graph.pb --labels C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image C:/Progetti/2019/Tommy Hilfigher Roadshow/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg", 7, false);
@@ -70,7 +70,7 @@
             echo "glassesClassification: ERROR";
     }
     $oExec = $WshShell->Run('wmic process where name="py.exe" CALL setpriority "realtime"', 7, false); */
-    switch($glasses){
+    /* switch($glasses){
         case "roundFemale": $oExec = $WshShell->Run("py.exe C:/xampp/htdocs/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/label_image.py --graph C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/retrained_graph.pb --labels C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rfglasses/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image C:/Progetti/2019/Tommy Hilfigher Roadshow/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg", 7, false);
             break;
         case "roundMale": $oExec = $WshShell->Run("py.exe C:/xampp/htdocs/2019-01-19008-THRoadshow/tf_files/tf_files_rmglasses/label_image.py --graph C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rmglasses/retrained_graph.pb --labels C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_rmglasses/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesImage.jpg", 7, false);
@@ -91,13 +91,13 @@
             $errorThrown = 1;
             echo "glassesClassification: ERROR";
     }
-    $oExec = $WshShell->Run('wmic process where name="py.exe" CALL setpriority "realtime"', 7, false);
+    $oExec = $WshShell->Run('wmic process where name="py.exe" CALL setpriority "realtime"', 7, false); */
     //While per ricerca esistenza file output.txt
     //Quando trovato, leggere il contenuto, interpretarlo se necessario e inviare la risposta al client
     if($errorThrown == 0){    
-        //$outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";        //Netizens
+        $outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";        //Netizens
         //$outputpath = "C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";        //Home
-        $outputpath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";
+        //$outputpath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/glassesOutput.txt";
         while(!file_exists($outputpath)){
             
         }
@@ -106,7 +106,7 @@
         $string = fgets($outputfile);
         $perc = (float) fgets($outputfile);
         if($string == "hit\r\n"){
-            if($perc < 0.75){
+            if($perc < 0.65){
                 fclose($outputfile);
                 unlink($outputpath);
                 echo "miss";

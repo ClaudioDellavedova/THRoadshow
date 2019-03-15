@@ -15,9 +15,9 @@
 
     $imgdata = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST['imagebase64']));
 
-    //$imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";           //Netizens
+    $imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";           //Netizens
     //$imgfilepath = "C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";           //Home
-    $imgfilepath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";
+    //$imgfilepath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg";
 
     file_put_contents($imgfilepath,$imgdata);
 
@@ -48,9 +48,9 @@
             //$mail->addBCC('bcc@example.com');
 
             //Attachments
-            //$mail->addAttachment('E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');         //Netizens
+            $mail->addAttachment('E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');         //Netizens
             //$mail->addAttachment('C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');         //Home
-            $mail->addAttachment('C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');
+            //$mail->addAttachment('C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/mailImage.jpg', 'magicMirror.jpg');
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
