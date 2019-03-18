@@ -52,6 +52,7 @@ $(document).ready(function(){
         $("#screen1").fadeOut(800);
         $("#screen2").fadeIn(800);
         $(".startScanBtn.modified").fadeIn(800);
+        /* setTimeout(function(){JEEWIDGET.set_videoRotation(90);},500); */
     });
     $("#screen1 .modified").click(function(){
         $(".scanMask").fadeIn(800);
@@ -287,9 +288,9 @@ function initAll(){
     $("#recommendedGlasses").remove();
     $(".removeGlasses").hide();
     $(".visual-section").hide();
-    $("#widgetScreen").fadeIn(800);
-    document.getElementById("mailTextBox").value = "";
     $("#screen1").show();
+    $("#widgetScreen").show();
+    document.getElementById("mailTextBox").value = "";
     $("#screenshotContainerMain").empty();
     $("#screenshotContainerMail").empty();
     $("#filter1").empty();
