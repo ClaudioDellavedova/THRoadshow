@@ -39,7 +39,7 @@
     $string = fgets($outputfile);
     if($string == "glasses\r\n"){
         $perc = (float) fgets($outputfile);
-        if($perc < 0.9){
+        if($perc < 0.8){
             $string = fgets($outputfile);
             fclose($outputfile);
             unlink($outputpath);
