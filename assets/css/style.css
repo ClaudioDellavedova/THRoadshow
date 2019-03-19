@@ -122,14 +122,14 @@ button {
 .visual-section {
     position: absolute;
     overflow: hidden;
-    width: 1080px;
-    height: 1920px;
+    width: 1824px;
+    height: 2736px;
     margin: 0 auto;
     background-size: cover;
 }
 .inner-section{width:100%;height:100%;}
 #screen1 {
-    background-image: url("../images/screen1full.png");
+    background-image: url("../images/eng/screen1FullFinal.png");
 }
 #screen2 {
     background-image: url("../images/screen2full.png");
@@ -140,7 +140,7 @@ button {
 .screenNavBtn {
     position: absolute;
     right: 0px;
-    bottom: 246px;
+    bottom: 50px;
     width: 260px;
     height: 130px;
     opacity: 1;
@@ -149,7 +149,7 @@ button {
 }
 #THFooter {
     position: absolute;
-    width: 1080px;
+    width: 1824px;
     height: 34px;
     top: 1800px;
 }
@@ -191,7 +191,7 @@ button {
     text-align: center;
 } */
 #scanningPanel {
-    background-image: url("../images/scanningPanel.png");
+    background-image: url("../images/eng/scanningPanelFinal.png");
     display: none;
 }
 .startScanBtn {
@@ -276,9 +276,9 @@ button {
 }
 #genderSelectionPanel {
     position: absolute;
-    width: 1080px;
-    height: 1920px;
-    background-image: url("../images/genderSelectionPanel.png");
+    width: 843px;
+    height: 512px;
+    background-image: url("../images/eng/genderSelectionPanelFinal.png");
     display: none;
 }
 #genderSelectionPanel .femaleButton {
@@ -298,7 +298,7 @@ button {
     background-size: cover;
 }
 #recommendedGlassesPanel {
-    background-image: url("../images/recommendedGlassesPanel.png");
+    background-image: url("../images/eng/recommendedGlassesPanelFinal.png");
     display: none;
 }
 .roundFemale {
@@ -307,8 +307,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/round_female.jpg");
-    background-color: rgb(0, 0, 0);
+    background-image: url("../images/roundFemale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(0, 0, 0); */
     margin: 0 auto;
 }
 .roundMale {
@@ -317,8 +318,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/round_male.jpg");
-    background-color: rgb(0, 0, 255);
+    background-image: url("../images/roundMale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(0, 0, 255); */
     margin: 0 auto;
 }
 .squaredFemale {
@@ -327,8 +329,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/squared_female.jpg");
-    background-color: rgb(0, 255, 0);
+    background-image: url("../images/squaredFemale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(0, 255, 0); */
     margin: 0 auto;
 }
 .squaredMale {
@@ -337,8 +340,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/squared_male.jpg");
-    background-color: rgb(0, 255, 255);
+    background-image: url("../images/squaredMale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(0, 255, 255); */
     margin: 0 auto;
 }
 .ovalFemale {
@@ -347,7 +351,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-color: rgb(255, 0, 0);
+    background-image: url("../images/ovalFemale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(255, 0, 0); */
     margin: 0 auto;
 }
 .ovalMale {
@@ -356,7 +362,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-color: rgb(255, 0, 255);
+    background-image: url("../images/ovalMale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(255, 0, 255); */
     margin: 0 auto;
 }
 .triangularFemale {
@@ -365,8 +373,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/triangular_female.jpg");
-    background-color: rgb(255, 255, 0);
+    background-image: url("../images/triangularFemale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(255, 255, 0); */
     margin: 0 auto;
 }
 .triangularMale {
@@ -375,8 +384,9 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/triangular_male.jpg");
-    background-color: rgb(255, 255, 255);
+    background-image: url("../images/triangularMale.JPG");
+    background-position-y: center;
+    /* background-color: rgb(255, 255, 255); */
     margin: 0 auto;
 }
 .tellMeButton {
@@ -394,7 +404,7 @@ button {
     color: white;
 }
 #missPanel {
-    background-image: url("../images/missPanel.png");
+    background-image: url("../images/eng/missPanelFinal.png");
     display: none;
 }
 #missPanel .retryBtn {
@@ -412,7 +422,7 @@ button {
     border-color: white;
 }
 #hitPanel {
-    background-image: url("../images/hitPanel.png");
+    background-image: url("../images/eng/hitPanelFinal.png");
     display: none;
 }
 #hitPanel .screenNavBtn, #filterPanel .screenNavBtn {
@@ -428,14 +438,14 @@ button {
     display: none;
 }
 #filterPanel .filterPanelUpperHalf {
-    width: 1080px;
-    height: 1920px;
-    background-image: url("../images/filterPanelUpperHalf.png");
+    width: 1824px;
+    height: 2736px;
+    background-image: url("../images/eng/filterPanelUpperHalfFinal.png");
 }
 #filterPanel .filterPanelLowerHalf {
-    width: 1080px;
-    height: 1920px;
-    background-image: url("../images/filterPanelLowerHalf.png");
+    width: 1824px;
+    height: 2736px;
+    background-image: url("../images/eng/filterPanelLowerHalfFinal.png");
     display: none;
 }
 #filterPanel .takePicBtn {
@@ -525,7 +535,7 @@ button {
     width: 200px;
 }
 #mailSection {
-    background-image: url("../images/mailSectionBkg.png");
+    background-image: url("../images//eng/mailSectionBkgFinal.png");
 }
 #screenshotContainerMail {
     position: absolute;
