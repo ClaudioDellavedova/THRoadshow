@@ -14,7 +14,7 @@
     
     $imgfilepath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceImage.jpg";           //Netizens
     //$imgfilepath = "C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceImage.jpg";           //Home
-    //$imgfilepath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceImage.jpg";
+    //$imgfilepath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/userimages/faceImage.jpg";
 
     file_put_contents($imgfilepath,$imgdata);
 
@@ -23,14 +23,14 @@
     $oExec = $WshShell->Run('wmic process where name="python.exe" CALL setpriority "realtime"', 7, false);
     //$oExec = $WshShell->Run("py.exe C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_bw/label_image.py --graph C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_bw/retrained_graph.pb --labels C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_bw/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceImage.jpg", 7, false);         //Home
     //$oExec = $WshShell->Run('wmic process where name="py.exe" CALL setpriority "realtime"', 7, false);
-    //$oExec = $WshShell->Run("py.exe C:/xampp/htdocs/2019-01-19008-THRoadshow/tf_files/tf_files_bw/label_image.py --graph C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_bw/retrained_graph.pb --labels C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/tf_files/tf_files_bw/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceImage.jpg", 7, false);         //Home
+    //$oExec = $WshShell->Run("py.exe C:/xampp/htdocs/2019-01-19008-THRoadshow/tf_files/tf_files_bw/label_image.py --graph C:/xampp/htdocs/2019-01-19008-THRoadshow/tf_files/tf_files_bw/retrained_graph.pb --labels C:/xampp/htdocs/2019-01-19008-THRoadshow/tf_files/tf_files_bw/retrained_labels.txt --input_layer Placeholder --output_layer final_result --image C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/userimages/faceImage.jpg", 7, false);         //Home
     //$oExec = $WshShell->Run('wmic process where name="py.exe" CALL setpriority "realtime"', 7, false);
 
     //While per ricerca esistenza file output.txt
     //Quando trovato, leggere il contenuto, interpretarlo se necessario e inviare la risposta al client
     $outputpath = "E:/Claudio/Progetti/2019/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceOutput.txt";           //Netizens
     //$outputpath = "C:/Progetti/2019/Tommy Hilfigher Roadshow/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceOutput.txt";           //Home
-    //$outputpath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/2019-01-19008-throadshow-new_web_app/userimages/faceOutput.txt";
+    //$outputpath = "C:/xampp/htdocs/2019-01-19008-THRoadshow/new_web_app/userimages/faceOutput.txt";
     while(!file_exists($outputpath)){
         
     }
