@@ -132,7 +132,7 @@ button {
     background-image: url("../images/eng/screen1FullFinal.png");
 }
 #screen2 {
-    background-image: url("../images/screen2full.png");
+    background-image: url("../images/eng/screen2FullFinal.png");
 }
 #screen2.modified {
     background-image: url("../images/screen2bkg.png");
@@ -276,8 +276,8 @@ button {
 }
 #genderSelectionPanel {
     position: absolute;
-    width: 843px;
-    height: 512px;
+    width: 1824px;
+    height: 2736px;
     background-image: url("../images/eng/genderSelectionPanelFinal.png");
     display: none;
 }

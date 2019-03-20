@@ -259,6 +259,7 @@ $(document).ready(function(){
         $(".sendMailBtn").show();
         snapCount++;
         $("#mailSection").fadeIn(800);
+        $("#mailTextBox").blur();
     });
     $(".mailBackBtn").click(function(){
         $("#panelSection").fadeIn(800);
