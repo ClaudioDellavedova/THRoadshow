@@ -122,17 +122,19 @@ button {
 .visual-section {
     position: absolute;
     overflow: hidden;
-    width: 1824px;
-    height: 2736px;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     background-size: cover;
 }
 .inner-section{width:100%;height:100%;}
 #screen1 {
-    background-image: url("../images/eng/screen1FullFinal.png");
+    background-image: url("../images/ita/screen1FullFinal.png");
+    background-size: contain;
 }
 #screen2 {
-    background-image: url("../images/eng/screen2FullFinal.png");
+    background-image: url("../images/ita/screen2FullFinal.png");
+    background-size: contain;
 }
 #screen2.modified {
     background-image: url("../images/screen2bkg.png");
@@ -140,7 +142,7 @@ button {
 .screenNavBtn {
     position: absolute;
     right: 0px;
-    bottom: 50px;
+    bottom: 170px;
     width: 260px;
     height: 130px;
     opacity: 1;
@@ -149,9 +151,9 @@ button {
 }
 #THFooter {
     position: absolute;
-    width: 1824px;
+    width: 100%;
     height: 34px;
-    top: 1800px;
+    bottom: 30px;
 }
 #THFooter img {
     position: relative;
@@ -191,7 +193,8 @@ button {
     text-align: center;
 } */
 #scanningPanel {
-    background-image: url("../images/eng/scanningPanelFinal.png");
+    background-image: url("../images/ita/scanningPanelFinal.png");
+    background-size: contain;
     display: none;
 }
 .startScanBtn {
@@ -276,9 +279,8 @@ button {
 }
 #genderSelectionPanel {
     position: absolute;
-    width: 1824px;
-    height: 2736px;
-    background-image: url("../images/eng/genderSelectionPanelFinal.png");
+    background-image: url("../images/ita/genderSelectionPanelFinal.png");
+    background-size: contain;
     display: none;
 }
 #genderSelectionPanel .femaleButton {
@@ -298,7 +300,8 @@ button {
     background-size: cover;
 }
 #recommendedGlassesPanel {
-    background-image: url("../images/eng/recommendedGlassesPanelFinal.png");
+    background-image: url("../images/ita/recommendedGlassesPanelFinal.png");
+    background-size: contain;
     display: none;
 }
 .roundFemale {
@@ -307,7 +310,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/roundFemale.JPG");
+    background-image: url("../images/roundFemale.png");
     background-position-y: center;
     /* background-color: rgb(0, 0, 0); */
     margin: 0 auto;
@@ -318,7 +321,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/roundMale.JPG");
+    background-image: url("../images/roundMale.png");
     background-position-y: center;
     /* background-color: rgb(0, 0, 255); */
     margin: 0 auto;
@@ -329,7 +332,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/squaredFemale.JPG");
+    background-image: url("../images/squaredFemale.png");
     background-position-y: center;
     /* background-color: rgb(0, 255, 0); */
     margin: 0 auto;
@@ -340,7 +343,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/squaredMale.JPG");
+    background-image: url("../images/squaredMale.png");
     background-position-y: center;
     /* background-color: rgb(0, 255, 255); */
     margin: 0 auto;
@@ -351,7 +354,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/ovalFemale.JPG");
+    background-image: url("../images/ovalFemale.png");
     background-position-y: center;
     /* background-color: rgb(255, 0, 0); */
     margin: 0 auto;
@@ -362,7 +365,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/ovalMale.JPG");
+    background-image: url("../images/ovalMale.png");
     background-position-y: center;
     /* background-color: rgb(255, 0, 255); */
     margin: 0 auto;
@@ -373,7 +376,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/triangularFemale.JPG");
+    background-image: url("../images/triangularFemale.png");
     background-position-y: center;
     /* background-color: rgb(255, 255, 0); */
     margin: 0 auto;
@@ -384,7 +387,7 @@ button {
     width: 410px;
     height: 410px;
     background-size: contain;
-    background-image: url("../images/triangularMale.JPG");
+    background-image: url("../images/triangularMale.png");
     background-position-y: center;
     /* background-color: rgb(255, 255, 255); */
     margin: 0 auto;
@@ -404,7 +407,8 @@ button {
     color: white;
 }
 #missPanel {
-    background-image: url("../images/eng/missPanelFinal.png");
+    background-image: url("../images/ita/missPanelFinal.png");
+    background-size: contain;
     display: none;
 }
 #missPanel .retryBtn {
@@ -422,7 +426,8 @@ button {
     border-color: white;
 }
 #hitPanel {
-    background-image: url("../images/eng/hitPanelFinal.png");
+    background-image: url("../images/ita/hitPanelFinal.png");
+    background-size: contain;
     display: none;
 }
 #hitPanel .screenNavBtn, #filterPanel .screenNavBtn {
@@ -438,14 +443,16 @@ button {
     display: none;
 }
 #filterPanel .filterPanelUpperHalf {
-    width: 1824px;
-    height: 2736px;
-    background-image: url("../images/eng/filterPanelUpperHalfFinal.png");
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/ita/filterPanelUpperHalfFinal.png");
+    background-size: contain;
 }
 #filterPanel .filterPanelLowerHalf {
-    width: 1824px;
-    height: 2736px;
-    background-image: url("../images/eng/filterPanelLowerHalfFinal.png");
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/ita/filterPanelLowerHalfFinal.png");
+    background-size: contain;
     display: none;
 }
 #filterPanel .takePicBtn {
@@ -535,7 +542,9 @@ button {
     width: 200px;
 }
 #mailSection {
-    background-image: url("../images//eng/mailSectionBkgFinal.png");
+    background-image: url("../images/ita/mailSectionBkgFinal.png");
+    background-size: contain;
+    display: none;
 }
 #screenshotContainerMail {
     position: absolute;

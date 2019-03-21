@@ -52,7 +52,7 @@ $(document).ready(function(){
         $("#screen1").fadeOut(800);
         $("#screen2").fadeIn(800);
         $(".startScanBtn.modified").fadeIn(800);
-        /* setTimeout(function(){JEEWIDGET.set_videoRotation(90);},500); */
+        //setTimeout(function(){JEEWIDGET.set_videoRotation(180);},500);
     });
     $("#screen1 .modified").click(function(){
         $(".scanMask").fadeIn(800);
@@ -316,7 +316,7 @@ function faceClassification(){
     var img64 = canvas.toDataURL("faceImage/jpg");
     $.ajax({
         type: "POST",
-        url: "faceClassification.php",
+        url: "http://thr.netizens.it/faceClassification.php",
         data: { imagebase64: img64 },
         success: faceCallback,
         error: function( jqXhr, textStatus, errorThrown ){
@@ -330,7 +330,7 @@ function genderGuess(){
     var img64 = canvas.toDataURL("genderImage/jpg");
     $.ajax({
         type: "POST",
-        url: "genderGuess.php",
+        url: "http://thr.netizens.it/genderGuess.php",
         data: { imagebase64: img64 },
         success: genderCallback,
         error: function( jqXhr, textStatus, errorThrown ){
@@ -347,7 +347,7 @@ function glassesClassification(){
     $(".scanLine").fadeIn(800);
     $.ajax({
         type: "POST",
-        url: "glassesClassification.php",
+        url: "http://thr.netizens.it/glassesClassification.php",
         data: { recommendedGlasses: finalList[0],
                 imagebase64: img64 },
         success: glassesCallback,
@@ -533,7 +533,7 @@ function sendMail(){
         img64 = document.getElementById("mailPic").src;
         $.ajax({
             type: "POST",
-            url: "emailSender.php",
+            url: "http://thr.netizens.it/emailSender.php",
             data: { imagebase64: img64, mailSendTo: mailAddress},
             success: mailCallback,
             error: function( jqXhr, textStatus, errorThrown ){
