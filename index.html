@@ -30,7 +30,7 @@
           searchImageMask: 'assets/images/blank.png',
           searchImageColor: 0x000000,
           callbackReady: function(){
-            JEEWIDGET.set_videoRotation(0);
+            //setTimeout(function(){JEEWIDGET.set_videoRotation(180);},100);
           },
           onError: function(errorLabel){ // this function catches errors, so you can display custom integrated messages
             alert('An error happened. errorLabel =' + errorLabel)

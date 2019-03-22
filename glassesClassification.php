@@ -108,18 +108,18 @@
         if($string == "hit\r\n"){
             if($perc < 0.65){
                 fclose($outputfile);
-                unlink($outputpath);
+                //unlink($outputpath);
                 echo "miss";
             }
             else{
                 fclose($outputfile);
-                unlink($outputpath);
+                //unlink($outputpath);
                 echo "hit";
             }
         }
         else{
             fclose($outputfile);
-            unlink($outputpath);
+            //unlink($outputpath);
             echo "miss";
         }
     }
